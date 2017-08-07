@@ -7,5 +7,6 @@
 
 ## 抉择
    > Bootstrap是非常优秀的前端框架，但在构建大型应用的开发时通常远远不够。如果Bootstrap能够完全满足你的项目，建议使用Bootstrap，如果你需要的更多，则建议使用ZUI。
+
 ## 参考
-  [1 zui官网说明](http://zui.sexy/#basic/intro)
+  * 1 [zui官网说明](http://zui.sexy/#basic/intro)
