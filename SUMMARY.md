@@ -2,7 +2,7 @@
 
 ## 内容
   * [Part1-基础](docs/basic/README.md)
-    [] [说明]()
+    * [说明](docs/basic/intro.md)
     * [约定]()
     * [下载与使用]()
     * [Hello World]()
