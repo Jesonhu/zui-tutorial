@@ -1,6 +1,6 @@
 # 涉及:
  [1 基于BootStrap](#基于BootStrap定制)
- [2 抉择](参考)
+ [2 抉择](#抉择)
 
 ## 基于BootStrap定制
    > ZUI继承了Bootstrap 3 中的大部分基础内容，但出于与Bootstrap不同的目的，一些组件都进行了定制和修改。
