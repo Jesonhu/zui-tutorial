@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Basic-辅助类</title>
+    <link rel="stylesheet" href="../../Static/zui/css/zui.min.css">
+    <style lang="">
+        .float,
+        .center-block{
+            width:40%;
+            height:100px;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    <h2>小号字体</h2>
+    <small>小字号文本，small标签或者.small，当前父容器字号的85%</small>
+    <p class="small">小字号段落</p>
+
+    <hr>
+    <h2>字体颜色</h2>
+    <p class="text-muted">轻柔段落.text-muted</p>
+    <p class="text-gray">灰色段落.text-gray</p>
+    <p class="text-primary">原始段落.text-primary</p>
+    <p>无类段落</p>
+    <p class="text-danger">危险段落.text-danger</p>
+    <p class="text-red">红色文字段落.text-red V1.7.0已经无该类</p>
+    <p class="text-success">成功文字段落.text-success</p>
+    <p class="text-green">绿色文字段落.text-green V1.7.0已经无该类</p>
+    <p class="text-warning">警告文字段落.text-warning</p>
+    <p class="text-yellow">黄色文字段落.text-yellow V1.7.0已经无该类</p>
+    <p class="text-info">详情文字段落.text-info</p>
+    <p class="text-blue">蓝色文字段落.text-blue V1.7.0已经无该类</p>
+    <p class="text-important">重要文字段落.text-important</p>
+    <p class="text-brown">棕色文字段落.text-brown V1.7.0已经无该类</p>
+    <p class="text-special">特殊文字段落.text-special</p>
+    <p class="text-purple">紫色文字段落.text-purple V1.7.0已经无该类</p>
+
+    <hr>
+    <h2>文本背景高亮--仅有背景</h2>
+    <p class="hl-default">文本背景高亮--灰色.hl-default</p>
+    <p class="hl-primary">文本背景高亮--默认.hl-primary</p>
+    <p class="hl-danger">文本背景高亮--红色.hl-danger</p>
+    <p class="hl-success">文本背景高亮--绿色.hl-success</p>
+    <p class="hl-warning">文本背景高亮--警告.hl-warning</p>
+    <p class="hl-info">文本背景高亮--详情.hl-info</p>
+    <p class="hl-important">文本背景高亮--重要.hl-important</p>
+    <p class="hl-special">文本背景高亮--特殊.hl-special</p>
+
+    <hr>
+    <h2>文本背景色--背景和文字颜色</h2>
+    <p class="bg-default">文本背景色--灰色.bg-default</p>
+    <p class="bg-primary">文本背景色--默认.bg-primary</p>
+    <p class="bg-danger">文本背景色--红色.bg-danger</p>
+    <p class="bg-success">文本背景色--绿色.bg-success</p>
+    <p class="bg-warning">文本背景色--警告.bg-warning</p>
+    <p class="bg-info">文本背景色--详情.bg-info</p>
+    <p class="bg-important">文本背景色--重要.bg-important</p>
+    <p class="bg-special">文本背景色--特殊.bg-special</p>
+
+    <hr>
+    <h2>禁止文本换行</h2>
+    <p class="text-nowrap">.text-nowrap打死不换行打死不换行打死不换行打死不换行打死不换行打死不换行</p>
+    <p class="nobr">.nobr打死不换行打死不换行打死不换行打死不换行打死不换行打死不换行打死不换行打死不换行</p>
+
+    <hr>
+    <h2>文本超出省略</h2>
+    <p class="text-elllipsis">.text-elllipsis一行显示超出了还不换行显示省略号一行显示超出了还不换行显示省略号</p>
+
+    <hr>
+    <p>内容边距.with-padding</p>
+    <p class="with-padding bg-default">文本背景色--灰色.bg-default</p>
+    <p class="with-padding bg-primary">文本背景色--默认.bg-primary</p>
+    <p class="with-padding bg-danger">文本背景色--红色.bg-danger</p>
+    <p class="with-padding bg-success">文本背景色--绿色.bg-success</p>
+    <p class="with-padding bg-warning">文本背景色--警告.bg-warning</p>
+    <p class="with-padding bg-info">文本背景色--详情.bg-info</p>
+    <p class="with-padding bg-important">文本背景色--重要.bg-important</p>
+    <p class="with-padding bg-special">文本背景色--特殊.bg-special</p>
+
+    <hr>
+    <p>关闭按钮</p>
+    <button class="close">
+        <span aria-hidden="true">x</span>
+        <span class="sr-only">关闭</span>
+    </button>
+    <p>三角符号</p>
+    <span class="caret"></span>
+
+    <hr>
+    <p>浮动</p>
+    <div class="wrap"></div>
+    <div class="container">
+        <div class="float-wrap clearfix">
+            <div class="float pull-left">左浮动.pull-left</div>
+            <div class="float pull-right">右浮动.pull-right</div>
+        </div>
+    </div>
+
+    <hr>
+    <p>块居中</p>
+    <div class="wrap">
+        <div class="container">
+            <div>
+                <div class="center-block">居中显示.center-block</div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <p>隐藏文本.text-hide</p>
+    <p class="text-hide">看不到我</p>
+
+    <hr>
+    <p>显示隐藏元素</p>
+    <p>.hidden 和 .showing具备更高的优先级，防止其他规则重写。.invisible 仅仅隐藏元素，但元素内容所占的空间并不会清除。</p>
+    <div class="show">我是.show下面一行是.hide</div>
+    <div class="hide">.hide</div>
+    <div class="showing">我是.showing权重最高,下面一行是.hidden</div>
+    <div class="hidden">.hidden</div>
+</body>
+</html>

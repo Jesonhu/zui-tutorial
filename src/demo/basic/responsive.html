@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>响应式设计</title>
+    <style lang="less">
+        // MEDIA QUERIES TYPES
+
+        // Extra small screen (phone).
+        @screen-xs:                  480px;
+        @screen-xs-min:              @screen-xs;
+        @screen-phone:               @screen-xs-min;
+
+        // Small screen (tablet).
+        @screen-sm:                  768px;
+        @screen-sm-min:              @screen-sm;
+        @screen-tablet:              @screen-sm-min;
+
+        // Medium screen (desktop).
+        @screen-md:                  992px;
+        @screen-md-min:              @screen-md;
+        @screen-desktop:             @screen-md-min;
+
+        // Large screen (wide desktop).
+        @screen-lg:                  1200px;
+        @screen-lg-min:              @screen-lg;
+        @screen-lg-desktop:          @screen-lg-min;
+
+        // Provide max value for different screens.
+        @screen-xs-max:              (@screen-sm-min - 1);
+        @screen-sm-max:              (@screen-md-min - 1);
+        @screen-md-max:              (@screen-lg-min - 1);
+
+        /* lg */
+        @media (min-width: 1200px) {
+            /* 大屏电脑样式 @screen-lg-min
+             * @media (min-width: @screen-lg-min) {}
+             */
+        }
+        /* md */
+        @media (min-width:992px) and (max-width: 1199px) {
+            /* 笔记本样式 
+             * @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {}
+             */
+        }
+        /* sm */
+        @media (min-width: 768px) and (max-width: 991px) {
+            /* 平板样式 
+             * @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {}
+             */
+        }
+        /* xs */
+        @media (max-width: 767px) {
+            /* 手机样式 
+             * @media (max-width: @screen-xs-max) {}   
+             */
+        }
+    </style>
+</head>
+<body>
+    <div><a href="https://github.com/easysoft/zui/blob/master/src/less/basic/utilities.responsive.less">Github地址</a></div>
+</body>
+</html>

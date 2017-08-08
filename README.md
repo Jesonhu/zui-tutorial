@@ -33,11 +33,11 @@
       * 独立组件
       * 组件清单
       * 使用 Gulp 定制
-      * [demo](./src/demo/basic/brower.html)
       * [官网参考](http://zui.sexy/#basic/edition)
     * [浏览器可用性]()
       * 受支持的平台
       * 浏览器检测
+      * [demo](./src/demo/basic/brower.html)
       * [官网参考](http://zui.sexy/#basic/browser)
     * [全局样式表]()
       * Normalize.css
@@ -52,8 +52,10 @@
       * 响应式布局容器
       * 液态化布局容器
       * 固定宽度布局容器
+      * [demo](./src/demo/basic/layout.html)
       * [官网参考](http://zui.sexy/#basic/layout)
     * [响应式设计]()
+      * [demo](./src/demo/basic/responsive.html)
       * [官网参考](http://zui.sexy/#basic/responsive)
     * [栅格系统]()
       * 栅格参数
@@ -61,6 +63,7 @@
     * [排版]()
       * 字体
       * 文字排版
+      * [demo](./src/demo/basic/typography.html)
       * [官网参考](http://zui.sexy/#basic/typography)
     * [辅助类]()
       * 小字号文本
@@ -77,6 +80,7 @@
       * 块居中
       * 隐藏文本
       * 显示或隐藏元素
+      * [demo](./src/demo/basic/utilities.html)
       * [官网参考](http://zui.sexy/#basic/utilities)
     * [配色]()
       * 主要颜色

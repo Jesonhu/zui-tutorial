@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>布局容器</title>
+    <link rel="stylesheet" href="../../Static/zui/css/zui.min.css">
+    <style lang="">
+        .wrap1{
+            background:blue;
+        }
+        .container{
+            background-color:red;
+        }
+        .wra2{
+            background-color:green;
+        }
+        .container-fluid{
+            background-color:red;
+        }
+        .wrap3,
+        .wrap4,
+        .wrap5,
+        .wrap6{
+            background:blue;
+        }
+        .container-fixed,
+        .container-fixed-md,
+        .container-fixed-sm,
+        .container-fixed-xs{
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 响应式布局容器 -->
+    <div class="wrap1">
+        <div class="container">响应式布局容器.container</div>
+    </div>
+
+    <!-- 液态化布局容器 -->
+    <div class="wrap2">
+        <div class="container-fluid">
+            液态化布局容器，同父容器宽度.container-fluid
+        </div>
+    </div>
+
+    <!-- 固定宽度布局容器 -->
+    <div class="wrap3">
+        <div class="container-fixed">1160px</div>
+    </div>
+    <div class="wrap4">
+        <div class="container-fixed-md">960px</div>
+    </div>
+    <div class="wrap5">
+        <div class="container-fixed-sm">740px</div>
+    </div>
+    <div class="wrap6">
+        <div class="container-fixed-xs">440px</div>
+    </div>
+</body>
+</html>
