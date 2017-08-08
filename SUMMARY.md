@@ -33,7 +33,7 @@
       * 独立组件
       * 组件清单
       * 使用 Gulp 定制
-      * [demo](demo/basic/brower.html)
+      * [demo](./demo/basic/brower.html)
       * [官网参考](http://zui.sexy/#basic/edition)
     * [浏览器可用性]()
       * 受支持的平台
