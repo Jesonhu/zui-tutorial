@@ -165,7 +165,7 @@
       * 动态隐藏与显示
       * [demo](./src/demo/control/scrollbar.html)
       * [官方参考](http://zui.sexy/#control/scrollbar)
-  * [Part3-组件](docs/components/README.md)
+  * [Part3-组件](docs/component/README.md)
     * 消息框
       * 不同感情色彩的消息框
       * 使用图标
@@ -173,6 +173,7 @@
       * 块级消息
       * 消息框中的链接
       * 可以关闭的消息框
+      * [demo](./src/demo/component/alert.html)
       * [官方参考](http://zui.sexy/#component/alert)
     * 代码
       * 内联代码
@@ -188,6 +189,7 @@
       * 带下拉菜单的按钮
       * 使用Select
       * 分段按钮
+      * [demo](./src/demo/component/inputgroup.html)
       * [官方参考](http://zui.sexy/#component/inputgroup)
     * 列表组
       * 基本类型
