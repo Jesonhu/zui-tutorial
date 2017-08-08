@@ -100,52 +100,62 @@
       * 使用图标字体
       * ZUI中的图标
       * 如何使用图标？
+      * [demo](./src/demo/control/icon.html)
       * [官方参考](http://zui.sexy/#control/icon)
     * 按钮
       * 按钮的类型
       * 按钮的大小
       * 按钮的不同状态
       * 按钮的颜色
+      * [demo](./src/control/button.html)
       * [官方参考](http://zui.sexy/#control/button)
     * 进度条
       * 基本类型
       * 颜色主题
       * 特殊效果
+      * [进度条](./src/demo/control/progressbar.html)
       * [官方参考](http://zui.sexy/#control/progressbar)
     * 标签
       * 基本样式
       * 颜色主题
       * 作为徽标
+      * [demo](./src/demo/control/label.html)
       * [官方参考](http://zui.sexy/#control/label)
     * 表单控件
       * 基本类型
       * 文本框状态
       * 尺寸
       * 使用栅格
+      * [demo](./src/demo/control/textbox.html)
       * [官方参考](http://zui.sexy/#control/textbox)
     * 多选和单选框
       * 默认外观
       * 内联形式
+      * [demo](./src/demo/control/checkbox.html)
       * [官方参考](http://zui.sexy/#control/checkbox)
     * 开关
       * 普通示例
       * 对齐
       * 内联样式
       * 禁用
+      * [demo](./src/demo/control/switch.html)
       * [官方参考](http://zui.sexy/#control/switch)
     * 面包屑
       * 示例
+      * [demo](./src/demo/control/breadcrumb.html)
       * [官方参考](http://zui.sexy/#control/breadcrumb)
     * 图片
       * 圆角图片
       * 圆形图片
       * 缩略图
       * 响应式图片
+      * [demo](./src/demo/control/image.html)
       * [官方参考](http://zui.sexy/#control/image)
     * 多级标题
       * 普通标题
       * 包含副标题
       * 带底部水平分隔线的标题
+      * [demo](./src/demo/control/header.html)
       * [官方参考](http://zui.sexy/#control/header)
     * 分割线
       * 水平分隔线
@@ -153,6 +163,7 @@
     * 滚动条
       * 基本样式
       * 动态隐藏与显示
+      * [demo](./src/demo/control/scrollbar.html)
       * [官方参考](http://zui.sexy/#control/scrollbar)
   * [Part3-组件](docs/components/README.md)
     * 消息框

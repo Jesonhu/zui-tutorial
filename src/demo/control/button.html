@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Control-button</title>
+    <link rel="stylesheet" href="../../Static/zui/css/zui.min.css">
+</head>
+<body>
+    <h2>按钮的类型</h2>
+    <button class="btn btn-primary" type="button">主要按钮.btn .btn-primary</button>
+    <a href="" class="btn btn-primary">A主要按钮 .btn .btn-primary</a>
+    <button class="btn" type="button">标准按钮</button>
+    <button class="btn btn-link" type="button">链接按钮</button>
+    <div class="btn-group">
+        <button class="btn">按钮组</button>
+        <button class="btn">第二个</button>
+        <button class="btn">第三个</button>
+    </div>
+
+    <hr>
+    <h2>按钮的大小</h2>
+    <button class="btn btn-lg btn-success">.btn-lg .btn-success</button>
+    <button class="btn btn-lg">.btn-lg</button>
+    <button class="btn btn-success">默认</button>
+    <button class="btn">默认</button>
+    <button class="btn btn-sm btn-success">.btn-sm .btn-success较小</button>
+    <button class="btn btn-sm">较小.btn-sm</button>
+    <button class="btn btn-mini btn-success">.btn-mini .btn-success迷你</button>
+    <button class="btn btn-mini">迷你.btn-mini</button>
+    <div class="wrap">
+        <div class="container"><button class="btn btn-block" type="button">块状按钮.btn-block</button></div>
+    </div>
+    <div class="wrap">
+        <div class="container-fixed-md"><button class="btn btn-block btn-warning" type="button">块状按钮</button></div>
+    </div>
+
+    <hr>
+    <h2>按钮的不同状态</h2>
+    <button class="btn"><i class="icon icon-star">带图标按钮</i></button>
+    <button data-toggle="button" class="btn" type="button">状态切换按钮</button>
+    <div class="btn-group" data-toggle="buttons">
+        <label for="" class="btn active"><input type="checkbox">多选1(默认)</label>
+        <label for="" class="btn"><input type="checkbox">多选2</label>
+        <label for="" class="btn"><input type="checkbox">多选3</label>
+    </div>
+    <div class="btn-group" data-toggle="buttons">
+        <label for="" class="btn active"><input type="radio" name="" checked>单选选1(默认)</label>
+        <label for="" class="btn"><input type="radio" name="options">单选2</label>
+        <label for="" class="btn"><input type="radio" name="options">单选3</label>
+    </div>
+    <!-- 
+        多选和单选的区别：
+            1 type="checkbox" 多选 ；type="radio"单选
+    -->
+    <button id="async-guide" type="button" class="btn btn-primary" data-loading-text="正在同步中...">同步状态</button>
+
+    <a href="/#" class="btn btn-primary disabled">样式禁用</a>
+    <a href="/#a" class="btn btn btn-primary disabled" disabled>点击也禁用??</a>
+
+    <hr>
+    <h2>按钮的颜色</h2>
+    <button class="btn" type="button">默认</button><br>
+    <button class="btn btn-primary" type="button">.btn-primary主要</button> <br>
+    <button class="btn btn-info" type="button">.btn-info信息</button> <br>
+    <button class="btn btn-success" type="button">.btn-success成功</button> <br>
+    <button class="btn btn-warning" type="button">.btn-warning警告</button> <br>
+    <button class="btn btn-danger" type="button">.btn-danger危险</button> <br>
+
+    <script src="../../Static/jquery-2.1.4.min.js"></script>
+    <script src="../../Static/zui/js/zui.js"></script>
+    <script>
+        $(document).ready(() => {
+            // on里面的回调函数不能写成箭头函数的形式
+            $("#async-guide").on('click', function() {
+                const _this = $(this)
+                _this.button('loading')
+
+                // 异步请求
+                setTimeout(() => {
+                    _this.button('reset')
+                }, 2000)
+            })
+        })
+    </script>
+</body>
+</html>

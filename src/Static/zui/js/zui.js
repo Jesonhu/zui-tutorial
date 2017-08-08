@@ -1,8 +1,8 @@
 /*!
- * ZUI: Standard edition - v1.5.0 - 2016-09-06
+ * ZUI: Standard edition - v1.7.0 - 2017-06-17
  * http://zui.sexy
  * GitHub: https://github.com/easysoft/zui.git 
- * Copyright (c) 2016 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2017 cnezsoft.com; Licensed MIT
  */
 
 /*! Some code copy from Bootstrap v3.0.0 by @fat and @mdo. (Copyright 2013 Twitter, Inc. Licensed under http://www.apache.org/licenses/)*/
@@ -15,7 +15,7 @@
  * ======================================================================== */
 
 
-(function($, window) {
+(function($, window, undefined) {
     'use strict';
 
     /* Check jquery */
@@ -26,6 +26,13 @@
         if($.isPlainObject(obj)) {
             $.extend($.zui, obj);
         }
+    };
+
+    var MOUSE_BUTTON_CODES = {
+        all: -1,
+        left: 0,
+        middle: 1,
+        right: 2
     };
 
     var lastUuidAmend = 0;
@@ -51,11 +58,30 @@
             var config = window.config;
             if(typeof(config) != 'undefined' && config.clientLang) {
                 lang = config.clientLang;
-            } else {
+            }
+            if(!lang) {
                 var hl = $('html').attr('lang');
                 lang = hl ? hl : (navigator.userLanguage || navigator.userLanguage || 'zh_cn');
             }
             return lang.replace('-', '_').toLowerCase();
+        },
+
+        strCode: function(str) {
+            var code = 0;
+            if(str && str.length) {
+                for(var i = 0; i < str.length; ++i) {
+                    code += i * str.charCodeAt(i);
+                }
+            }
+            return code;
+        },
+
+        getMouseButtonCode: function(mouseButton) {
+            if(typeof mouseButton !== 'number') {
+                mouseButton = MOUSE_BUTTON_CODES[mouseButton];
+            }
+            if(mouseButton === undefined || mouseButton === null) mouseButton = -1;
+            return mouseButton;
         }
     });
 
@@ -78,7 +104,32 @@
         $this.trigger(e);
         return e;
     };
-}(jQuery, window));
+}(jQuery, window, undefined));
+
+
+/* ========================================================================
+ * ZUI: typography.js
+ * http://zui.sexy
+ * ========================================================================
+ * Copyright (c) 2014-2016 cnezsoft.com; Licensed MIT
+ * ======================================================================== */
+
+
+(function($) {
+    'use strict';
+
+    $.fn.fixOlPd = function(pd) {
+        pd = pd || 10;
+        return this.each(function() {
+            var $ol = $(this);
+            $ol.css('paddingLeft', Math.ceil(Math.log10($ol.children().length)) * pd + 10);
+        });
+    };
+
+    $(function() {
+        $('.ol-pd-fix,.article ol').fixOlPd();
+    });
+}(jQuery));
 
 
 /* ========================================================================
@@ -1761,98 +1812,77 @@
  * ======================================================================== */
 
 
-(function($) {
+(function($, document) {
     'use strict';
 
-    var Draggable = function(element, options) {
-        this.$ = $(element);
-        this.options = this.getOptions(options);
-        this.init();
-    };
-
-    Draggable.DEFAULTS = {
+    var NAME     = 'zui.draggable',
+        DEFAULTS = {
+        // selector: '',
         container: 'body',
         move: true
+        // mouseButton: -1 // 0, 1, 2, -1, all, left,  right, middle
+    };
+    var idIncrementer = 0;
+
+    var Draggable = function(element, options) {
+        var that     = this;
+        that.$       = $(element);
+        that.id      = idIncrementer++;
+        that.options = $.extend({}, DEFAULTS, that.$.data(), options);
+        that.init();
     };
 
-    Draggable.prototype.getOptions = function(options) {
-        options = $.extend({}, Draggable.DEFAULTS, this.$.data(), options);
-        return options;
-    };
+    Draggable.DEFAULTS = DEFAULTS;
+    Draggable.NAME     = NAME;
 
     Draggable.prototype.init = function() {
-        this.handleMouseEvents();
-    };
-
-    Draggable.prototype.handleMouseEvents = function() {
-        var $e = this.$,
-            BEFORE = 'before',
-            DRAG = 'drag',
-            FINISH = 'finish',
-            setting = this.options,
-            startPos, cPos, startOffset, mousePos, moved;
-
-        var mouseDown = function(event) {
-            if($.isFunction(setting[BEFORE])) {
-                var isSure = setting[BEFORE]({
-                    event: event,
-                    element: $e
-                });
-                if(isSure === false) return;
-            }
-
-            var $container = $(setting.container),
-                pos = $e.offset();
-            cPos = $container.offset();
-            startPos = {
-                x: event.pageX,
-                y: event.pageY
-            };
-            startOffset = {
-                x: event.pageX - pos.left + cPos.left,
-                y: event.pageY - pos.top + cPos.top
-            };
-            mousePos = $.extend({}, startPos);
-            moved = false;
-
-            $e.addClass('drag-ready');
-            $(document).bind('mousemove', mouseMove).bind('mouseup', mouseUp);
-            event.preventDefault();
-            if(setting.stopPropagation) {
-                event.stopPropagation();
-            }
-        };
+        var that           = this,
+            $root          = that.$,
+            BEFORE         = 'before',
+            DRAG           = 'drag',
+            FINISH         = 'finish',
+            eventSuffix    = '.' + NAME + '.' + that.id,
+            mouseDownEvent = 'mousedown' + eventSuffix,
+            mouseUpEvent   = 'mouseup' + eventSuffix,
+            mouseMoveEvent = 'mousemove' + eventSuffix,
+            setting        = that.options,
+            selector       = setting.selector,
+            handle         = setting.handle,
+            $ele           = $root,
+            startPos,
+            cPos,
+            startOffset,
+            mousePos,
+            moved;
 
         var mouseMove = function(event) {
-            moved = true;
-            var mX = event.pageX,
-                mY = event.pageY;
+            var mX      = event.pageX,
+                mY      = event.pageY;
+                moved   = true;
             var dragPos = {
                 left: mX - startOffset.x,
                 top: mY - startOffset.y
             };
 
-            $e.removeClass('drag-ready').addClass('dragging');
+            $ele.removeClass('drag-ready').addClass('dragging');
             if(setting.move) {
-                $e.css(dragPos);
+                $ele.css(dragPos);
             }
 
-            if($.isFunction(setting[DRAG])) {
-                setting[DRAG]({
-                    event: event,
-                    element: $e,
-                    startOffset: startOffset,
-                    pos: dragPos,
-                    offset: {
-                        x: mX - startPos.x,
-                        y: mY - startPos.y
-                    },
-                    smallOffset: {
-                        x: mX - mousePos.x,
-                        y: mY - mousePos.y
-                    }
-                });
-            }
+            setting[DRAG] && setting[DRAG]({
+                event: event,
+                element: $ele,
+                startOffset: startOffset,
+                pos: dragPos,
+                offset: {
+                    x: mX - startPos.x,
+                    y: mY - startPos.y
+                },
+                smallOffset: {
+                    x: mX - mousePos.x,
+                    y: mY - mousePos.y
+                }
+            });
             mousePos.x = mX;
             mousePos.y = mY;
 
@@ -1862,63 +1892,112 @@
         };
 
         var mouseUp = function(event) {
-            $(document).unbind('mousemove', mouseMove).unbind('mouseup', mouseUp);
+            $(document).off(eventSuffix);
             if(!moved) {
-                $e.removeClass('drag-ready');
+                $ele.removeClass('drag-ready');
                 return;
             }
             var endPos = {
                 left: event.pageX - startOffset.x,
                 top: event.pageY - startOffset.y
             };
-            $e.removeClass('drag-ready').removeClass('dragging');
+            $ele.removeClass('drag-ready dragging');
             if(setting.move) {
-                $e.css(endPos);
+                $ele.css(endPos);
             }
 
-            if($.isFunction(setting[FINISH])) {
-                setting[FINISH]({
-                    event: event,
-                    element: $e,
-                    startOffset: startOffset,
-                    pos: endPos,
-                    offset: {
-                        x: event.pageX - startPos.x,
-                        y: event.pageY - startPos.y
-                    },
-                    smallOffset: {
-                        x: event.pageX - mousePos.x,
-                        y: event.pageY - mousePos.y
-                    }
-                });
-            }
+            setting[FINISH] && setting[FINISH]({
+                event: event,
+                element: $ele,
+                startOffset: startOffset,
+                pos: endPos,
+                offset: {
+                    x: event.pageX - startPos.x,
+                    y: event.pageY - startPos.y
+                },
+                smallOffset: {
+                    x: event.pageX - mousePos.x,
+                    y: event.pageY - mousePos.y
+                }
+            });
             event.preventDefault();
             if(setting.stopPropagation) {
                 event.stopPropagation();
             }
         };
 
-        if(setting.handle) {
-            $e.on('mousedown', setting.handle, mouseDown);
+        var mouseDown = function(event) {
+            var mouseButton = $.zui.getMouseButtonCode(setting.mouseButton);
+            if(mouseButton > -1 && event.button !== mouseButton) {
+                return;
+            }
+            
+            var $mouseDownEle = $(this);
+            if(selector) {
+                $ele = handle ? $mouseDownEle.closest(selector) : $mouseDownEle;
+            }
+
+            if(setting[BEFORE]) {
+                var isSure = setting[BEFORE]({
+                    event: event,
+                    element: $ele
+                });
+                if(isSure === false) return;
+            }
+
+            var $container = $(setting.container),
+                pos        = $ele.offset();
+                cPos       = $container.offset();
+                startPos   = {
+                    x: event.pageX,
+                    y: event.pageY
+                };
+                startOffset = {
+                    x: event.pageX - pos.left + cPos.left,
+                    y: event.pageY - pos.top + cPos.top
+                };
+                mousePos    = $.extend({}, startPos);
+                moved       = false;
+
+            $ele.addClass('drag-ready');
+            event.preventDefault();
+
+            if(setting.stopPropagation) {
+                event.stopPropagation();
+            }
+
+            $(document).on(mouseMoveEvent, mouseMove).on(mouseUpEvent, mouseUp);
+        };
+
+        if(handle) {
+            $root.on(mouseDownEvent, handle, mouseDown);
+        } else if(selector) {
+            $root.on(mouseDownEvent, selector, mouseDown);
         } else {
-            $e.on('mousedown', mouseDown);
+            $root.on(mouseDownEvent, mouseDown);
         }
+    };
+
+    Draggable.prototype.destroy = function() {
+        var eventSuffix = '.' + NAME + '.' + this.id;
+        this.$.off(eventSuffix);
+        $(document).off(eventSuffix);
+        this.$.data(NAME, null);
     };
 
     $.fn.draggable = function(option) {
         return this.each(function() {
             var $this = $(this);
-            var data = $this.data('zui.draggable');
+            var data = $this.data(NAME);
             var options = typeof option == 'object' && option;
 
-            if(!data) $this.data('zui.draggable', (data = new Draggable(this, options)));
-
+            if(!data) $this.data(NAME, (data = new Draggable(this, options)));
             if(typeof option == 'string') data[option]();
         });
     };
 
     $.fn.draggable.Constructor = Draggable;
-}(jQuery));
+}(jQuery, document));
 
 
 /* ========================================================================
@@ -1932,260 +2011,310 @@
 (function($, document, Math) {
     'use strict';
 
-    var Droppable = function(element, options) {
-        this.$ = $(element);
-        this.options = this.getOptions(options);
-
-        this.init();
-    };
-
-    Droppable.DEFAULTS = {
-        container: 'body',
+    var NAME     = 'zui.droppable',
+        DEFAULTS = {
+        // container: '',
+        // selector: '',
+        // handle: '',
         // flex: false,
         // nested: false,
+        target: '.droppable-target',
         deviation: 5,
         sensorOffsetX: 0,
         sensorOffsetY: 0
+        // mouseButton: -1 // 0, 1, 2, -1, all, left,  right, middle
+    };
+    var idIncrementer = 0;
+
+    var Droppable = function(element, options) {
+        var that     = this;
+        that.id      = idIncrementer++;
+        that.$       = $(element);
+        that.options = $.extend({}, DEFAULTS, that.$.data(), options);
+        that.init();
     };
 
-    Droppable.prototype.getOptions = function(options) {
-        options = $.extend({}, Droppable.DEFAULTS, this.$.data(), options);
-        return options;
-    };
+    Droppable.DEFAULTS = DEFAULTS;
+    Droppable.NAME     = NAME;
 
-    Droppable.prototype.callEvent = function(name, params) {
+    Droppable.prototype.trigger = function(name, params) {
         return $.zui.callEvent(this.options[name], params, this);
     };
 
     Droppable.prototype.init = function() {
-        this.handleMouseEvents();
-    };
+        var that           = this,
+            $root          = that.$,
+            setting        = that.options,
+            deviation      = setting.deviation,
+            eventSuffix    = '.' + NAME + '.' + that.id,
+            mouseDownEvent = 'mousedown' + eventSuffix,
+            mouseUpEvent   = 'mouseup' + eventSuffix,
+            mouseMoveEvent = 'mousemove' + eventSuffix,
+            selector       = setting.selector,
+            handle         = setting.handle,
+            flex           = setting.flex,
+            container      = setting.container,
+            $ele           = $root,
+            isMouseDown    = false,
+            $container     = container ? $(setting.container).first() : (selector ? $root : $('body')),
+            $targets,
+            $target,
+            $shadow,
+            isIn,
+            isSelf,
+            oldCssPosition,
+            startOffset,
+            startMouseOffset,
+            containerOffset,
+            clickOffset,
+            mouseOffset,
+            lastMouseOffset,
+            mouseDownBackEventCall;
 
-    Droppable.prototype.handleMouseEvents = function() {
-        var $e = this.$,
-            self = this,
-            setting = this.options,
-            BEFORE = 'before';
+        var mouseMove = function(event) {
+            if(!isMouseDown) return;
 
-        this.$triggerTarget = (setting.trigger ? ($.isFunction(setting.trigger) ? setting.trigger($e) : $e.find(setting.trigger)).first() : $e);
+            mouseOffset = {left: event.pageX, top: event.pageY};
 
-        this.$triggerTarget.on('mousedown', function(event) {
-            if($.isFunction(setting[BEFORE])) {
-                var isSure = setting[BEFORE]({
-                    event: event,
-                    element: $e
+            // ignore small move
+            if(Math.abs(mouseOffset.left - startMouseOffset.left) < deviation && Math.abs(mouseOffset.top - startMouseOffset.top) < deviation) return;
+
+            if($shadow === null) // create shadow
+            {
+                var cssPosition = $container.css('position');
+                if(cssPosition != 'absolute' && cssPosition != 'relative' && cssPosition != 'fixed') {
+                    oldCssPosition = cssPosition;
+                    $container.css('position', 'relative');
+                }
+
+                $shadow = $ele.clone().removeClass('drag-from').addClass('drag-shadow').css({
+                    position:   'absolute',
+                    width:      $ele.outerWidth(),
+                    transition: 'none'
+                }).appendTo($container);
+                $ele.addClass('dragging');
+
+                that.trigger('start', {
+                    event:   event,
+                    element: $ele
                 });
-                if(isSure === false) return;
             }
 
-            var $targets = $.isFunction(setting.target) ? setting.target($e) : $(setting.target),
-                target = null,
-                shadow = null,
-                $container = $(setting.container).first(),
-                isIn = false,
-                isSelf = true,
-                oldCssPosition,
-                startOffset = $e.offset(),
-                startMouseOffset = {
-                    left: event.pageX,
-                    top: event.pageY
-                };
-            var containerOffset = $container.offset();
-            var clickOffset = {
+            var offset = {
+                left: mouseOffset.left - clickOffset.left,
+                top:  mouseOffset.top - clickOffset.top
+            };
+            var position = {
+                left: offset.left - containerOffset.left,
+                top:  offset.top - containerOffset.top
+            };
+            $shadow.css(position);
+            $.extend(lastMouseOffset, mouseOffset);
+
+            var isNew = false;
+                isIn = false;
+
+            if(!flex) {
+                $targets.removeClass('drop-to');
+            }
+
+            var $newTarget = null;
+            $targets.each(function() {
+                var t    = $(this),
+                    tPos = t.offset(),
+                    tW   = t.outerWidth(),
+                    tH   = t.outerHeight(),
+                    tX   = tPos.left + setting.sensorOffsetX,
+                    tY   = tPos.top + setting.sensorOffsetY;
+
+                if(mouseOffset.left > tX && mouseOffset.top > tY && mouseOffset.left < (tX + tW) && mouseOffset.top < (tY + tH)) {
+                    if($newTarget) $newTarget.removeClass('drop-to');
+                    $newTarget = t;
+                    if(!setting.nested) return false;
+                }
+            });
+
+            if($newTarget) {
+                isIn = true;
+                var id = $newTarget.data('id');
+                if($ele.data('id') != id) isSelf = false;
+                if($target === null || ($target.data('id') !== id && (!isSelf))) isNew = true;
+                $target = $newTarget;
+                if(flex) {
+                    $targets.removeClass('drop-to');
+                }
+                $target.addClass('drop-to');
+            }
+
+            if(!flex) {
+                $ele.toggleClass('drop-in', isIn);
+                $shadow.toggleClass('drop-in', isIn);
+            } else if($target !== null && $target.length) {
+                isIn = true;
+            }
+
+            that.trigger('drag', {
+                event: event,
+                isIn: isIn,
+                target: $target,
+                element: $ele,
+                isNew: isNew,
+                selfTarget: isSelf,
+                clickOffset: clickOffset,
+                offset: offset,
+                position: {
+                    left: offset.left - containerOffset.left,
+                    top: offset.top - containerOffset.top
+                },
+                mouseOffset: mouseOffset
+            });
+            event.preventDefault();
+        };
+
+        var mouseUp = function(event) {
+            $(document).off(eventSuffix);
+            clearTimeout(mouseDownBackEventCall);
+            if(!isMouseDown) return;
+
+            isMouseDown = false;
+
+            if(oldCssPosition) {
+                $container.css('position', oldCssPosition);
+            }
+
+            if($shadow === null) {
+                $ele.removeClass('drag-from');
+                that.trigger('always', {
+                    event: event,
+                    cancel: true
+                });
+                return;
+            }
+
+            if(!isIn) $target = null;
+            var isSure = true;
+            mouseOffset = event ? {
+                left: event.pageX,
+                top: event.pageY
+            } : lastMouseOffset;
+            var offset = {
+                left: mouseOffset.left - clickOffset.left,
+                top: mouseOffset.top - clickOffset.top
+            };
+            var moveOffset = {
+                left: mouseOffset.left - lastMouseOffset.left,
+                top: mouseOffset.top - lastMouseOffset.top
+            };
+            lastMouseOffset.left = mouseOffset.left;
+            lastMouseOffset.top = mouseOffset.top;
+            var eventOptions = {
+                event: event,
+                isIn: isIn,
+                target: $target,
+                element: $ele,
+                isNew: (!isSelf) && $target !== null,
+                selfTarget: isSelf,
+                offset: offset,
+                mouseOffset: mouseOffset,
+                position: {
+                    left: offset.left - containerOffset.left,
+                    top: offset.top - containerOffset.top
+                },
+                lastMouseOffset: lastMouseOffset,
+                moveOffset: moveOffset
+            };
+
+            isSure = that.trigger('beforeDrop', eventOptions);
+
+            if(isSure && isIn) {
+                that.trigger('drop', eventOptions);
+            }
+
+            $targets.removeClass('drop-to');
+            $ele.removeClass('dragging').removeClass('drag-from');
+            $shadow.remove();
+            $shadow = null;
+
+            that.trigger('finish', eventOptions);
+            that.trigger('always', eventOptions);
+
+            if(event) event.preventDefault();
+        };
+
+        var mouseDown = function(event) {
+            var mouseButton = $.zui.getMouseButtonCode(setting.mouseButton);
+            if(mouseButton > -1 && event.button !== mouseButton) {
+                return;
+            }
+            
+            var $mouseDownEle = $(this);
+            if(selector) {
+                $ele = handle ? $mouseDownEle.closest(selector) : $mouseDownEle;
+            }
+
+            if($ele.hasClass('drag-shadow')) {
+                return;
+            }
+
+            if(setting['before']) {
+                if(setting['before']({
+                    event: event,
+                    element: $ele
+                }) === false) return;
+            }
+
+            isMouseDown = true;
+            $targets         = $.isFunction(setting.target) ? setting.target($root) : $container.find(setting.target),
+            $target          = null,
+            $shadow          = null,
+            isIn             = false,
+            isSelf           = true,
+            oldCssPosition   = null,
+            startOffset      = $ele.offset(),
+            containerOffset  = $container.offset();
+            startMouseOffset = {left: event.pageX, top: event.pageY};
+            lastMouseOffset  = $.extend({}, startMouseOffset);
+            clickOffset      = {
                 left: startMouseOffset.left - startOffset.left,
                 top: startMouseOffset.top - startOffset.top
             };
-            var lastMouseOffset = {
-                left: startMouseOffset.left,
-                top: startMouseOffset.top
-            };
 
-            $e.addClass('drag-from');
-            $(document).bind('mousemove', mouseMove).bind('mouseup', mouseUp);
+            $ele.addClass('drag-from');
+            $(document).on(mouseMoveEvent, mouseMove).on(mouseUpEvent, mouseUp);
+            mouseDownBackEventCall = setTimeout(function() {
+                $(document).on(mouseDownEvent, mouseUp);
+            }, 10);
             event.preventDefault();
+        };
 
-            function mouseMove(event) {
-                var mouseOffset = {
-                    left: event.pageX,
-                    top: event.pageY
-                };
+        if(handle) {
+            $root.on(mouseDownEvent, handle, mouseDown);
+        } else if(selector) {
+            $root.on(mouseDownEvent, selector, mouseDown);
+        } else {
+            $root.on(mouseDownEvent, mouseDown);
+        }
+    };
 
-                // ignore small move
-                if(Math.abs(mouseOffset.left - startMouseOffset.left) < setting.deviation && Math.abs(mouseOffset.top - startMouseOffset.top) < setting.deviation) return;
-
-                if(shadow === null) // create shadow
-                {
-                    var cssPosition = $container.css('position');
-                    if(cssPosition != 'absolute' && cssPosition != 'relative' && cssPosition != 'fixed') {
-                        oldCssPosition = cssPosition;
-                        $container.css('position', 'relative');
-                    }
-
-                    shadow = $e.clone().removeClass('drag-from').addClass('drag-shadow').css({
-                        position: 'absolute',
-                        width: $e.outerWidth(),
-                        transition: 'none'
-                    }).appendTo($container);
-                    $e.addClass('dragging');
-
-                    self.callEvent('start', {
-                        event: event,
-                        element: $e
-                    });
-                }
-
-                var offset = {
-                    left: mouseOffset.left - clickOffset.left,
-                    top: mouseOffset.top - clickOffset.top
-                };
-                var position = {
-                    left: offset.left - containerOffset.left,
-                    top: offset.top - containerOffset.top
-                };
-                shadow.css(position);
-                lastMouseOffset.left = mouseOffset.left;
-                lastMouseOffset.top = mouseOffset.top;
-
-                var isNew = false;
-                isIn = false;
-
-                if(!setting.flex) {
-                    $targets.removeClass('drop-to');
-                }
-
-                var newTarget = null;
-                $targets.each(function() {
-                    var t = $(this);
-                    var tPos = t.offset();
-                    var tW = t.outerWidth(),
-                        tH = t.outerHeight(),
-                        tX = tPos.left + setting.sensorOffsetX,
-                        tY = tPos.top + setting.sensorOffsetY;
-
-                    if(mouseOffset.left > tX && mouseOffset.top > tY && mouseOffset.left < (tX + tW) && mouseOffset.top < (tY + tH)) {
-                        if(newTarget) newTarget.removeClass('drop-to');
-                        newTarget = t;
-                        if(!setting.nested) return false;
-                    }
-                });
-
-                if(newTarget) {
-                    isIn = true;
-                    var id = newTarget.data('id');
-                    if($e.data('id') != id) isSelf = false;
-                    if(target === null || (target.data('id') !== id && (!isSelf))) isNew = true;
-                    target = newTarget;
-                    if(setting.flex) {
-                        $targets.removeClass('drop-to');
-                    }
-                    target.addClass('drop-to');
-                }
-
-                if(!setting.flex) {
-                    $e.toggleClass('drop-in', isIn);
-                    shadow.toggleClass('drop-in', isIn);
-                } else if(target !== null && target.length) {
-                    isIn = true;
-                }
-
-                self.callEvent('drag', {
-                    event: event,
-                    isIn: isIn,
-                    target: target,
-                    element: $e,
-                    isNew: isNew,
-                    selfTarget: isSelf,
-                    clickOffset: clickOffset,
-                    offset: offset,
-                    position: {
-                        left: offset.left - containerOffset.left,
-                        top: offset.top - containerOffset.top
-                    },
-                    mouseOffset: mouseOffset
-                });
-                event.preventDefault();
-            }
-
-            function mouseUp(event) {
-                if(oldCssPosition) {
-                    $container.css('position', oldCssPosition);
-                }
-
-                if(shadow === null) {
-                    $e.removeClass('drag-from');
-                    $(document).unbind('mousemove', mouseMove).unbind('mouseup', mouseUp);
-                    self.callEvent('always', {
-                        event: event,
-                        cancel: true
-                    });
-                    return;
-                }
-
-                if(!isIn) target = null;
-                var isSure = true,
-                    mouseOffset = {
-                        left: event.pageX,
-                        top: event.pageY
-                    };
-                var offset = {
-                    left: mouseOffset.left - clickOffset.left,
-                    top: mouseOffset.top - clickOffset.top
-                };
-                var moveOffset = {
-                    left: mouseOffset.left - lastMouseOffset.left,
-                    top: mouseOffset.top - lastMouseOffset.top
-                };
-                lastMouseOffset.left = mouseOffset.left;
-                lastMouseOffset.top = mouseOffset.top;
-                var eventOptions = {
-                    event: event,
-                    isIn: isIn,
-                    target: target,
-                    element: $e,
-                    isNew: (!isSelf) && target !== null,
-                    selfTarget: isSelf,
-                    offset: offset,
-                    mouseOffset: mouseOffset,
-                    position: {
-                        left: offset.left - containerOffset.left,
-                        top: offset.top - containerOffset.top
-                    },
-                    lastMouseOffset: lastMouseOffset,
-                    moveOffset: moveOffset
-                };
-
-                isSure = self.callEvent('beforeDrop', eventOptions);
-
-                if(isSure && isIn) {
-                    self.callEvent('drop', eventOptions);
-                }
-
-                $(document).unbind('mousemove', mouseMove).unbind('mouseup', mouseUp);
-                $targets.removeClass('drop-to');
-                $e.removeClass('dragging').removeClass('drag-from');
-                shadow.remove();
-
-                self.callEvent('finish', eventOptions);
-                self.callEvent('always', eventOptions);
-
-                event.preventDefault();
-            }
-        });
-
+    Droppable.prototype.destroy = function() {
+        var eventSuffix = '.' + NAME + '.' + this.id;
+        this.$.off(eventSuffix);
+        $(document).off(eventSuffix);
+        this.$.data(NAME, null);
     };
 
     Droppable.prototype.reset = function() {
-        this.$triggerTarget.off('mousedown');
-        this.handleMouseEvents();
+        this.destroy();
+        this.init();
     };
 
     $.fn.droppable = function(option) {
         return this.each(function() {
             var $this = $(this);
-            var data = $this.data('zui.droppable');
+            var data = $this.data(NAME);
             var options = typeof option == 'object' && option;
 
-            if(!data) $this.data('zui.droppable', (data = new Droppable(this, options)));
+            if(!data) $this.data(NAME, (data = new Droppable(this, options)));
 
             if(typeof option == 'string') data[option]();
         });
@@ -2271,11 +2400,12 @@
         var topPos = position == 'fit' ? (half * 2 / 3) : (position == 'center' ? half : position);
         if($dialog.hasClass('modal-moveable')) {
             var pos = null;
-            if(this.options.rememberPos) {
-                if(this.options.rememberPos === true) {
+            var rememberPos = this.options.rememberPos;
+            if(rememberPos) {
+                if(rememberPos === true) {
                     pos = this.$element.data('modal-pos');
                 } else if($.zui.store) {
-                    pos = $.zui.store.pageGet(zuiname + '.rememberPos');
+                    pos = $.zui.store.pageGet(zuiname + '.rememberPos.' + rememberPos);
                 }
             }
             if(!pos) {
@@ -2305,10 +2435,11 @@
                     $dialog.css('margin-top', '').addClass('modal-dragged');
                 },
                 finish: function(e) {
-                    if(options.rememberPos) {
+                    var rememberPos = options.rememberPos;
+                    if(rememberPos) {
                         that.$element.data('modal-pos', e.pos);
-                        if($.zui.store && options.rememberPos !== true) {
-                            $.zui.store.pageSet(zuiname + '.rememberPos', e.pos);
+                        if($.zui.store && rememberPos !== true) {
+                            $.zui.store.pageSet(zuiname + '.rememberPos.' + rememberPos, e.pos);
                         }
                     }
                 }
@@ -2612,6 +2743,7 @@
         height: 'auto',
         // icon: null,
         name: 'triggerModal',
+        // className: '',
         fade: true,
         position: 'fit',
         showHeader: true,
@@ -2660,7 +2792,7 @@
             if(!that.isShown) $modal.off(ZUI_MODAL);
             $modal.remove();
         }
-        $modal = $('<div id="' + options.name + '" class="modal modal-trigger">' + (typeof options.loadingIcon === 'string' && options.loadingIcon.indexOf('icon-') === 0 ? ('<div class="icon icon-spin loader ' + options.loadingIcon + '"></div>') : options.loadingIcon) + '<div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button class="close" data-dismiss="modal">×</button><h4 class="modal-title"><i class="modal-icon"></i> <span class="modal-title-name"></span></h4></div><div class="modal-body"></div></div></div></div>').appendTo('body').data(NAME, that);
+        $modal = $('<div id="' + options.name + '" class="modal modal-trigger ' + (options.className || '') + '">' + (typeof options.loadingIcon === 'string' && options.loadingIcon.indexOf('icon-') === 0 ? ('<div class="icon icon-spin loader ' + options.loadingIcon + '"></div>') : options.loadingIcon) + '<div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button class="close" data-dismiss="modal">×</button><h4 class="modal-title"><i class="modal-icon"></i> <span class="modal-title-name"></span></h4></div><div class="modal-body"></div></div></div></div>').appendTo('body').data(NAME, that);
 
         var bindEvent = function(optonName, eventName) {
             var handleFunc = options[optonName];
@@ -2854,10 +2986,11 @@
         }
 
         $modal.modal({
-            show: 'show',
-            backdrop: options.backdrop,
-            moveable: options.moveable,
-            keyboard: options.keyboard
+            show       : 'show',
+            backdrop   : options.backdrop,
+            moveable   : options.moveable,
+            rememberPos: options.rememberPos,
+            keyboard   : options.keyboard
         });
     };
 
@@ -3012,15 +3145,15 @@
     // ===============================
 
     var Tooltip = function(element, options) {
-        this.type =
-            this.options =
-            this.enabled =
-            this.timeout =
-            this.hoverState =
-            this.$element = null
+        this.type = null
+        this.options = null
+        this.enabled = null
+        this.timeout = null
+        this.hoverState = null
+        this.$element = null
 
         this.init('tooltip', element, options)
-    }
+    } 
 
     Tooltip.DEFAULTS = {
         animation: true,
@@ -3126,19 +3259,20 @@
         var e = $.Event('show.zui.' + this.type)
 
         if((content || this.hasContent()) && this.enabled) {
-            this.$element.trigger(e)
+            var that = this
+            that.$element.trigger(e)
 
             if(e.isDefaultPrevented()) return
 
-            var $tip = this.tip()
+            var $tip = that.tip()
 
-            this.setContent(content)
+            that.setContent(content)
 
-            if(this.options.animation) $tip.addClass('fade')
+            if(that.options.animation) $tip.addClass('fade')
 
-            var placement = typeof this.options.placement == 'function' ?
-                this.options.placement.call(this, $tip[0], this.$element[0]) :
-                this.options.placement
+            var placement = typeof that.options.placement == 'function' ?
+                that.options.placement.call(that, $tip[0], that.$element[0]) :
+                that.options.placement
 
             var autoToken = /\s?auto?\s?/i
             var autoPlace = autoToken.test(placement)
@@ -3153,20 +3287,20 @@
                 })
                 .addClass(placement)
 
-            this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
+            that.options.container ? $tip.appendTo(that.options.container) : $tip.insertAfter(that.$element)
 
-            var pos = this.getPosition()
+            var pos = that.getPosition()
             var actualWidth = $tip[0].offsetWidth
             var actualHeight = $tip[0].offsetHeight
 
             if(autoPlace) {
-                var $parent = this.$element.parent()
+                var $parent = that.$element.parent()
 
                 var orgPlacement = placement
                 var docScroll = document.documentElement.scrollTop || document.body.scrollTop
-                var parentWidth = this.options.container == 'body' ? window.innerWidth : $parent.outerWidth()
-                var parentHeight = this.options.container == 'body' ? window.innerHeight : $parent.outerHeight()
-                var parentLeft = this.options.container == 'body' ? 0 : $parent.offset().left
+                var parentWidth = that.options.container == 'body' ? window.innerWidth : $parent.outerWidth()
+                var parentHeight = that.options.container == 'body' ? window.innerHeight : $parent.outerHeight()
+                var parentLeft = that.options.container == 'body' ? 0 : $parent.offset().left
 
                 placement = placement == 'bottom' && pos.top + pos.height + actualHeight - docScroll > parentHeight ? 'top' :
                     placement == 'top' && pos.top - docScroll - actualHeight < 0 ? 'bottom' :
@@ -3179,10 +3313,22 @@
                     .addClass(placement)
             }
 
-            var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
+            var calculatedOffset = that.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
 
-            this.applyPlacement(calculatedOffset, placement)
-            this.$element.trigger('shown.zui.' + this.type)
+            that.applyPlacement(calculatedOffset, placement)
+            var complete = function () {
+                var prevHoverState = that.hoverState
+                that.$element.trigger('shown.bs.' + that.type)
+                that.hoverState = null
+
+                if (prevHoverState == 'out') that.leave(that)
+            }
+
+            $.support.transition && that.$tip.hasClass('fade') ?
+                $tip
+                  .one('bsTransitionEnd', complete)
+                  .emulateTransitionEnd(150) :
+                complete()
         }
     }
 
@@ -4272,11 +4418,12 @@
         }
 
         var that = this;
+        options = that.options = $.extend({}, defaultOptions, options);
+        
         that.id = options.id || (id++);
         var oldMessager = all[that.id];
-        if(oldMessager) oldMessager.destory();
+        if(oldMessager) oldMessager.destroy();
         all[that.id] = that;
-        options = that.options = $.extend({}, defaultOptions, options);
         that.message = (options.icon ? '<i class="icon-' + options.icon + ' icon"></i> ' : '') + message;
 
         that.$ = $(template.format(options)).toggleClass('fade', options.fade).toggleClass('scale', options.scale).attr('id', 'messager-' + that.id);
@@ -4330,7 +4477,7 @@
 
         that.$.on('click', function(e) {
             if(options.onAction) {
-                result = options.onAction.call(this, 'content', null, that);
+                var result = options.onAction.call(this, 'content', null, that);
                 if(result === true) that.hide();
             }
         });
@@ -4363,6 +4510,14 @@
         var that = this,
             options = this.options;
 
+        if($.isFunction(message)) {
+            var oldCallback = callback;
+            callback = message;
+            if(oldCallback !== undefined) {
+                message = oldCallback;
+            }
+        }
+
         if(that.isShow) {
             that.hide(function() {
                 that.show(message, callback);
@@ -4373,14 +4528,6 @@
         if(that.hiding) {
             clearTimeout(that.hiding);
             that.hiding = null;
-        }
-
-        if($.isFunction(message)) {
-            var oldCallback = callback;
-            callback = message;
-            if(oldCallback !== undefined) {
-                message = oldCallback;
-            }
         }
 
         that.update(message);
@@ -4433,11 +4580,13 @@
         that.isShow = false;
     };
 
-    Messager.prototype.destory = function() {
+    Messager.prototype.destroy = function() {
         var that = this;
-        that.hide(true);
-        that.$.remove();
-        that.$ = null;
+        that.hide(function()
+        {
+            that.$.remove();
+            that.$ = null;
+        }, true);
         delete all[that.id];
     };
 
@@ -4528,10 +4677,11 @@
     };
 
     Menu.prototype.init = function() {
-        var children = this.$.children('.nav');
-        children.find('.nav').closest('li').addClass('nav-parent');
-        children.find('.nav > li.active').closest('li').addClass('active');
-        children.find('.nav-parent > a').append('<i class="' + this.options.foldicon + ' nav-parent-fold-icon"></i>');
+        var $children = this.$.children('.nav');
+        $children.find('.nav').closest('li').addClass('nav-parent');
+        $children.find('.nav > li.active').parent().closest('li').addClass('active');
+        $children.find('.nav-parent > a').append('<i class="' + this.options.foldicon + ' nav-parent-fold-icon"></i>');
+        $children.find('.nav-parent.show').find('.nav-parent-fold-icon').addClass('icon-rotate-90');
 
         this.handleFold();
     };
@@ -4580,7 +4730,7 @@
     $.fn.menu.Constructor = Menu;
 
     $(function() {
-        $('[data-toggle="menu"]').menu();
+        $('[data-toggle="menu"],[data-ride="menu"]').menu();
     });
 }(jQuery));
 
@@ -4989,6 +5139,10 @@
     Color.isColor = isColor;
     Color.names = namedColors;
 
+    Color.get = function(colorName) {
+        return new Color(colorName);
+    };
+
     /* helpers */
     function hexToRgb(hex) {
         hex = hex.toLowerCase();
@@ -5241,9 +5395,13 @@
             idx = 0;
             $parentItem = null;
         }
-        $list.attr('data-idx', idx || 0).children('li:not(.tree-action-item)').each(function(index) {
+        var $children = $list.attr('data-idx', idx || 0).children('li:not(.tree-action-item)').each(function(index) {
             that._initItem($(this), index + 1, $list);
         });
+        if($children.length === 1 && !$children.find('ul').length)
+        {
+            $children.addClass('tree-single-item');
+        }
         data = data || ($parentItem ? $parentItem.data() : null);
         var actions = formatActions(data ? data.actions : null, this.actions);
         if(actions) {
@@ -5277,7 +5435,7 @@
             idx = $pre.length ? ($pre.data('idx') + 1) : 1;
         }
         $parentList = $parentList || $item.closest('ul');
-        $item.attr('data-idx', idx);
+        $item.attr('data-idx', idx).removeClass('tree-single-item');
         if(!$item.data('id')) {
             var id = idx;
             if(!$parentList.hasClass('tree')) {
@@ -5335,10 +5493,11 @@
 
         // Bind event
         this.$.on('click', '.list-toggle,a[href="#"],.tree-toggle', function(e) {
-            var $li = $(this).parent('li');
+            var $this = $(this);
+            var $li = $this.parent('li');
             that.callEvent('hit', {target: $li, item: $li.data()});
             that.toggle($li);
-            e.preventDefault();
+            if($this.is('a')) e.preventDefault();
         }).on('click', '.tree-action', function() {
             var $action = $(this);
             var action = $action.data();

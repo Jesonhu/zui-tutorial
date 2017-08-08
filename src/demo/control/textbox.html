@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Control-textbox</title>
+    <link rel="stylesheet" href="../../Static/zui/css/zui.min.css">
+</head>
+<body>
+    <h2>基本类型</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <input type="text" class="form-control" placeholder="用户名">
+                <input type="password" class="form-control" placeholder="密码">
+                <input type="datetime" class="form-control" placeholder="日期">
+                <input type="datetime-local" class="form-control" placeholder="本地时间">
+                <input type="date" class="form-control" placeholder="日期">
+                <input type="month" class="form-control" placeholder="月份">
+                <input type="time" class="form-control" placeholder="时间">
+                <input type="week" class="form-control" placeholder="星期">
+                <input type="number" class="form-control" placeholder="数字">
+                <input type="email" class="form-control" placeholder="邮件">
+                <input type="url" class="form-control" placeholder="链接">
+                <input type="search" class="form-control" placeholder="搜索">
+                <input type="tel" class="form-control" placeholder="电话">
+                <input type="color" class="form-control" placeholder="颜色">
+                <input type="file" class="form-control" placeholder="请选择文件" value="">
+                <textarea name="" id="" cols="15" rows="3" class="form-control" placeholder="请留意"></textarea>
+                <select name="favorite1" id="" class="form-control" multiple>
+                    <option value="">请选择爱吃的水果</option>
+                    <option value="apple">苹果</option>
+                    <option value="banana">香蕉</option>
+                    <option value="orange">桔子</option>
+                    <option value="watermelon">西瓜</option>
+                </select>
+                <select name="favorite2" id="" class="form-control">
+                    <option value="">请选择爱吃的水果</option>
+                    <option value="apple">苹果2</option>
+                    <option value="banana">香蕉2</option>
+                    <option value="orange">桔子2</option>
+                    <option value="watermelon">西瓜2</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>文本框类型</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <input type="text" class="form-control" placeholder="该文本框已被禁用" disabled>
+                <input type="text" class="form-control" placeholder="该文本框只读" readonly>
+                <input type="text" class="form-control form-focus" placeholder="默认获得光标" autofocus>
+                <input type="text" class="form-control">
+
+                <div class="has-warning">
+                    <input type="text" class="form-control" placeholder="Warning">
+                </div>
+                <div class="has-error">
+                    <input type="text" class="form-control" placeholder="Error">
+                </div>
+                <div class="has-success">
+                    <input type="text" class="form-control" placeholder="Success">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>尺寸</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <input type="text" class="form-control input-lg" placeholder=".input-lg">
+                <input type="text" class="form-control" placeholder="default size">
+                <input type="text" class="form-control input-sm" placeholder=".input-sm">
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>使用栅格</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" placeholder="随父容器宽">
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" placeholder="随父容器宽">
+                </div>
+                <div class="col-xs-5">
+                    <input type="text" class="form-control" placeholder="随父容器宽">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../Static/jquery-2.1.4.min.js"></script>
+    <script src="../../Static/zui/js/zui.js"></script>
+</body>
+</html>

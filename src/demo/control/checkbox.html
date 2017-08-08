@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Control-checkbox</title>
+    <link rel="stylesheet" href="../../Static/zui/css/zui.min.css">
+</head>
+<body>
+    <h2>默认外观</h2>
+    <h4>多选框</h4>
+    <div class="checkbox"><label for=""><input type="checkbox">复选框1</label></div>
+    <div class="checkbox"><label for=""><input type="checkbox">复选框2</label></div>
+    <div class="checkbox"><label for=""><input type="checkbox" disabled>禁用方式1</label></div>
+    <div class="checkbox disabled"><label for=""><input type="checkbox">禁用方式2</label></div>
+    <h4>单选框</h4>
+    <!-- 单选框必须有name属性，且属性值相同 -->
+    <div class="radio"><label for=""><input type="radio" name="xx">单选1</label></div>
+    <div class="radio"><label for=""><input type="radio" name="xx">单选2</label></div>
+    <div class="radio"><label for=""><input type="radio" name="xx">单选3</label></div>
+    <h4>没有文字的复选框和单选框</h4>
+    <div class="checkbox"><label for=""><input type="checkbox"></label></div>
+    <div class="checkbox"><label for=""><input type="checkbox"></label></div>
+    <div class="radio"><label for=""><input type="radio" name="xx"></label></div>
+    <div class="radio"><label for=""><input type="radio" name="xx"></label></div>
+
+    <br>
+    <h2>内联样式</h2>
+    <label for="" class="checkbox-inline"><input type="checkbox">内联多选1</label>
+    <label for="" class="checkbox-inline"><input type="checkbox">内联多选2</label>
+    <label for="" class="checkbox-inline"><input type="checkbox" disabled>内联多选3</label>
+    <label for="" class="radio-inline"><input type="radio" name="xx3">内联多选1</label>
+    <label for="" class="radio-inline"><input type="radio" name="xx3">内联多选2</label>
+    <label for="" class="radio-inline"><input type="radio" name="xx3" disabled>内联多选3</label>
+
+    <script src="../../Static/jquery-2.1.4.min.js"></script>
+    <script src="../../Static/zui/js/zui.js"></script>
+</body>
+</html>

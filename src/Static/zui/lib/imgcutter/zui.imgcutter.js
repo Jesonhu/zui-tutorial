@@ -1,8 +1,8 @@
 /*!
- * ZUI: 图片裁剪工具 - v1.5.0 - 2016-09-06
+ * ZUI: 图片裁剪工具 - v1.7.0 - 2017-06-17
  * http://zui.sexy
  * GitHub: https://github.com/easysoft/zui.git 
- * Copyright (c) 2016 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2017 cnezsoft.com; Licensed MIT
  */
 
 /* ========================================================================
@@ -38,7 +38,7 @@
     }; // default options
 
     ImgCutter.prototype.callEvent = function(name, params) {
-        var result = this.$.callEvent(name + '.' + this.name, params, this);
+        var result = this.$.callEvent(name + '.' + NAME, params, this);
         return !(result.result !== undefined && (!result.result));
     };
 

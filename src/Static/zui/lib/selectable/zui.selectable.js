@@ -1,8 +1,8 @@
 /*!
- * ZUI: 拖拽选择 - v1.5.0 - 2016-09-06
+ * ZUI: 拖拽选择 - v1.7.0 - 2017-06-17
  * http://zui.sexy
  * GitHub: https://github.com/easysoft/zui.git 
- * Copyright (c) 2016 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2017 cnezsoft.com; Licensed MIT
  */
 
 /* ========================================================================
@@ -54,6 +54,7 @@
         },
         clickBehavior: 'toggle',
         ignoreVal: 3
+        // mouseButton: -1 // 0, 1, 2, -1, all, left,  right, middle
     };
 
     // Get and init options
@@ -98,24 +99,33 @@
                 }
                 if(handleResult !== true) {
                     that.selections[id] = isSelect ? that.selectOrder++ : false;
-                    var selected = [];
-                    $.each(that.selections, function(thisId, thisIsSelected) {
-                        if(thisIsSelected) selected.push(thisId);
-                    });
-                    that.callEvent(isSelect ? 'select' : 'unselect', {id: id, selections: that.selections, target: $element, selected: selected}, that);
+                    that.callEvent(isSelect ? 'select' : 'unselect', {id: id, selections: that.selections, target: $element, selected: that.getSelectedArray()}, that);
                 }
             }
             $element.toggleClass(that.options.selectClass, isSelect);
         }
     };
 
+    Selectable.prototype.getSelectedArray = function()
+    {
+        var selected = [];
+        $.each(this.selections, function(thisId, thisIsSelected) {
+            if(thisIsSelected) selected.push(thisId);
+        });
+        return selected;
+    };
+
     Selectable.prototype._init = function() {
         var options = this.options, that = this;
         var ignoreVal = options.ignoreVal;
+        var isIgnoreMove = true;
         var eventNamespace = '.' + this.name + '.' + this.id;
         var startX, startY, $range, range, x, y, checkRangeCall;
         var checkFunc = $.isFunction(options.checkFunc) ? options.checkFunc : null;
         var rangeFunc = $.isFunction(options.rangeFunc) ? options.rangeFunc : null;
+        var isMouseDown    = false;
+        var mouseDownBackEventCall = null;
+        var mouseDownEventName = 'mousedown' + eventNamespace;
 
         var checkRange = function() {
             if(!range) return;
@@ -148,6 +158,7 @@
         };
 
         var mousemove = function(e) {
+            if(!isMouseDown) return;
             x = e.pageX;
             y = e.pageY;
             range = {
@@ -157,7 +168,7 @@
                 top: y > startY ? startY : y
             };
             
-            if(range.width < ignoreVal && range.height < ignoreVal) return;
+            if(isIgnoreMove && range.width < ignoreVal && range.height < ignoreVal) return;
             if(!$range) {
                 $range = $('.selectable-range[data-id="' + that.id + '"]');
                 if(!$range.length) {
@@ -175,26 +186,38 @@
             $range.css(range);
             clearTimeout(checkRangeCall);
             checkRangeCall = setTimeout(checkRange, 10);
+            isIgnoreMove = false;
         };
 
         var mouseup = function(e) {
-            if(range) {
-                clearTimeout(checkRangeCall);
-                checkRange();
-                range = null;
-            }
-            if($range) $range.remove();
-            var selected = [];
-            $.each(that.selections, function(thisId, thisIsSelected) {
-                if(thisIsSelected) selected.push(thisId);
-            });
-            that.callEvent('finish', {selections: that.selections, selected: selected});
             $(document).off(eventNamespace);
+            clearTimeout(mouseDownBackEventCall);
+            if(!isMouseDown) return;
+            isMouseDown = false;
+            if($range) $range.remove();
+            if(!isIgnoreMove)
+            {
+                if(range) {
+                    clearTimeout(checkRangeCall);
+                    checkRange();
+                    range = null;
+                }
+            }
+            that.callEvent('finish', {selections: that.selections, selected: that.getSelectedArray()});
             e.preventDefault();
         };
 
         var mousedown = function(e) {
-            if(that.callEvent('start', e) === false) {
+            if(isMouseDown) {
+                return mouseup(e);
+            }
+
+            var mouseButton = $.zui.getMouseButtonCode(options.mouseButton);
+            if(mouseButton > -1 && e.button !== mouseButton) {
+                return;
+            }
+
+            if(that.altKey || e.which === 3 || that.callEvent('start', e) === false) {
                 return;
             }
 
@@ -213,27 +236,39 @@
                 });
             }
 
+            if(that.callEvent('startDrag', e) === false) {
+                that.callEvent('finish', {selections: that.selections, selected: that.getSelectedArray()});
+                return;
+            }
+
             startX = e.pageX;
             startY = e.pageY;
 
             $range = null;
+            isIgnoreMove = true;
+            isMouseDown = true;
 
             $(document).on('mousemove' + eventNamespace, mousemove).on('mouseup' + eventNamespace, mouseup);
+            mouseDownBackEventCall = setTimeout(function() {
+                $(document).on(mouseDownEventName, mouseup);
+            }, 10);
             e.preventDefault();
         };
 
         var $container = options.container && options.container !== 'default' ? $(options.container) : this.$;
         if(options.trigger) {
-            $container.on('mousedown' + eventNamespace, options.trigger, mousedown);
+            $container.on(mouseDownEventName, options.trigger, mousedown);
         } else {
-            $container.on('mousedown' + eventNamespace, mousedown);
+            $container.on(mouseDownEventName, mousedown);
         }
 
         $(document).on('keydown', function(e) {
             var code = e.keyCode;
             if(code === 17 || code == 91) that.multiKey = code;
+            else if(code === 18) that.altKey = true;
         }).on('keyup', function(e) {
             that.multiKey = false;
+            that.altKey = false;
         });
     };
 

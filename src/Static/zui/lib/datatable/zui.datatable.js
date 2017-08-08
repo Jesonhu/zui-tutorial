@@ -1,8 +1,8 @@
 /*!
- * ZUI: 数据表格 - v1.5.0 - 2016-09-06
+ * ZUI: 数据表格 - v1.7.0 - 2017-06-17
  * http://zui.sexy
  * GitHub: https://github.com/easysoft/zui.git 
- * Copyright (c) 2016 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2017 cnezsoft.com; Licensed MIT
  */
 
 /* ========================================================================
@@ -11,14 +11,18 @@
  * ========================================================================
  * Copyright (c) 2014-2016 cnezsoft.com; Licensed MIT
  * ======================================================================== */
-
-
 (function($) {
     'use strict';
 
     var name = 'zui.datatable';
     var store = $.zui.store;
 
+    /**
+     * Datatable class
+     * 
+     * @param object element           DOM element or jquery element
+     * @param object options           Datatable options
+     */
     var DataTable = function(element, options) {
         this.name = name;
         this.$ = $(element);
@@ -70,6 +74,10 @@
         colHover: true, // apply hover effection to head
         hoverClass: 'hover',
         colHoverClass: 'col-hover',
+
+
+        // Fix cell height
+        fixCellHeight: true,
 
         // Merge rows
         mergeRows: false, // Merge rows
@@ -286,9 +294,7 @@
                     'data-index': i,
                     'data-type': col.type,
                     style: col.css
-                });
-
-
+                }).css('width', col.width);
             $tr.append($th);
         }
 
@@ -404,7 +410,7 @@
                         'data-type': cols[i].type,
                         style: rowCol.css,
                         title: rowCol.title || ''
-                    });
+                    }).css('width', cols[i].width);
 
 
                 $tr.append($td);
@@ -414,6 +420,7 @@
             $flex.append($flexRow);
             $right.append($rightRow);
         }
+
 
         var $rowSpan;
         if(data.fixedLeft) {
@@ -464,7 +471,6 @@
 
         that.bindEvents();
         that.refreshSize();
-
         that.callEvent('render');
     };
 
@@ -602,7 +608,7 @@
             var syncChecks = function() {
                 var $checkRows = $rowsSpans.first().find('.table > tbody > tr');
                 var $checkedRows = $checkRows.filter('.' + checkedClass);
-                $checkRows.find('.check-row input:checkbox').prop('checked', false);
+                if(options.checkboxName) $checkRows.find('.check-row input:checkbox').prop('checked', false);
                 var checkedStatus = {
                     checkedAll: $checkRows.length === $checkedRows.length && $checkedRows.length > 0,
                     checks: $checkedRows.map(function() {
@@ -792,7 +798,6 @@
             return;
         }
 
-
         var data = this.data;
         var cols = data.cols,
             rows = data.rows,
@@ -883,7 +888,8 @@
         $datatable.find('.datatable-span.fixed-left').css('width', options.fixedLeftWidth);
         $datatable.find('.datatable-span.fixed-right').css('width', options.fixedRightWidth);
 
-        var findMaxHeight = function($cells) {
+        if(options.fixCellHeight) {
+            var findMaxHeight = function($cells) {
                 var mx = 0,
                     $cell, rowSpan;
                 $cells.css('height', 'auto');
@@ -893,26 +899,22 @@
                     if(!rowSpan || rowSpan == 1) mx = Math.max(mx, $cell.outerHeight());
                 });
                 return mx;
-            },
-            $dataCells = this.$dataCells,
-            $cells = this.$cells,
-            $headCells = this.$headCells;
+            };
+            var $dataCells = this.$dataCells,
+                $cells = this.$cells,
+                $headCells = this.$headCells;
 
-        // set width of data cells
-        for(i = 0; i < cols.length; ++i) {
-            $cells.filter('[data-index="' + i + '"]').css('width', cols[i].width);
-        }
+            // set height of head cells
+            var headMaxHeight = findMaxHeight($headCells);
+            $headCells.css('min-height', headMaxHeight).css('height', headMaxHeight);
 
-        // set height of head cells
-        var headMaxHeight = findMaxHeight($headCells);
-        $headCells.css('min-height', headMaxHeight).css('height', headMaxHeight);
-
-        // set height of data cells
-        var $rowCells;
-        for(i = 0; i < rows.length; ++i) {
-            $rowCells = $dataCells.filter('[data-row="' + i + '"]');
-            var rowMaxHeight = findMaxHeight($rowCells);
-            $rowCells.css('min-height', rowMaxHeight).css('height', rowMaxHeight);
+            // set height of data cells
+            var $rowCells;
+            for(i = 0; i < rows.length; ++i) {
+                $rowCells = $dataCells.filter('[data-row="' + i + '"]');
+                var rowMaxHeight = findMaxHeight($rowCells);
+                $rowCells.css('min-height', rowMaxHeight).css('height', rowMaxHeight);
+            }
         }
     };
 
@@ -939,4 +941,3 @@
 
     $.fn.datatable.Constructor = DataTable;
 }(jQuery));
-

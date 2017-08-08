@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Control-progressbar</title>
+    <link rel="stylesheet" href="../../Static/zui/css/zui.min.css">
+</head>
+<body id="pageContent">
+    <h2>基本类型</h2>
+    <div class="wrap">
+        <div class="progress">
+            <div class="progress-bar"
+                role="progressbar"
+                aria-valuenow="10"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width:10%"></div>
+            <span class="sr-only">10% Complete(success)</span>
+        </div>
+        <div class="progressbar-value">10%</div>
+    </div>
+
+    <hr>
+    <h2>颜色主题</h2>
+    <div class="wrap">
+        <div class="progress">
+            <div class="progress-bar"
+                role="progressbar"
+                aria-valuenow="20"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width:20%"></div>
+            <span class="sr-only">20% Complete(success)</span>
+        </div>
+        <div class="progressbar-value">20%</div>
+    </div>
+    <div class="wrap">
+        <div class="progress">
+            <div class="progress-bar progress-bar-info"
+                role="progressbar"
+                aria-valuenow="20"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width:20%"></div>
+            <span class="sr-only">20% Complete(success)</span>
+        </div>
+        <div class="progressbar-value">20%</div>
+    </div>
+    <div class="wrap">
+        <div class="progress">
+            <div class="progress-bar progress-bar-success"
+                role="progressbar"
+                aria-valuenow="20"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width:20%"></div>
+            <span class="sr-only">20% Complete(success)</span>
+        </div>
+        <div class="progressbar-value">20%</div>
+    </div>
+    <div class="wrap">
+        <div class="progress">
+            <div class="progress-bar progress-bar-warning"
+                role="progressbar"
+                aria-valuenow="20"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width:20%"></div>
+            <span class="sr-only">20% Complete(warning)</span>
+        </div>
+        <div class="progressbar-value">20%</div>
+    </div>
+    <div class="wrap">
+        <div class="progress">
+            <div class="progress-bar progress-bar-danger"
+                role="progressbar"
+                aria-valuenow="20"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width:20%"></div>
+            <span class="sr-only">20% Complete(danger)</span>
+        </div>
+        <div class="progressbar-value">20%</div>
+    </div>
+    
+
+    <br>
+    <h2>特殊效果</h2>
+    <div class="wrap">
+        <div class="progress progress-striped">
+            <div class="progress-bar progress-bar-info"
+                role="progressbar"
+                aria-valuenow="20"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width:20%"></div>
+            <span class="sr-only">20% Complete(info)</span>
+        </div>
+        <div class="progressbar-value">20%</div>
+    </div>
+    <div class="wrap">
+        <div class="progress progress-striped active">
+            <div class="progress-bar progress-bar-info"
+                role="progressbar"
+                aria-valuenow="20"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width:20%"></div>
+            <span class="sr-only">20% Complete(info)</span>
+        </div>
+        <div class="progressbar-value">20%</div>
+    </div>
+    <div class="wrap">
+        <div class="progress">
+            <div class="progress-bar progress-bar-success"
+                role="progressbar"
+                aria-valuenow="20"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width:50%"></div>
+            <span class="sr-only">50% Complete(success)</span>
+            <div class="progress-bar progress-bar-warning"
+                role="progressbar"
+                aria-valuenow="30"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width:20%"></div>
+            <span class="sr-only">30% Complete(success)</span>
+            <div class="progress-bar progress-bar-danger"
+                role="progressbar"
+                aria-valuenow="10"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width:20%"></div>
+            <span class="sr-only">10% Complete(danger)</span>
+        </div>
+        <div class="progressbar-value">20%</div>
+    </div>
+
+    <script src="../../Static/jquery-2.1.4.min.js"></script>
+    <script src="../../Static/zui/js/zui.js"></script>
+    <script>
+        $(document).ready(() => {
+            afterPageLoad()
+            function afterPageLoad() {
+                var changeProgressBar = function() { 
+                    var $progressbar = $(this); 
+                    var $bar = $progressbar.children('.progress-bar'); 
+                    console.log("change", $bar);
+
+                    // 当一个.progress里面进度条数量1个或者多个
+                    if($bar.length === 1) {
+                        var val = Math.round(Math.random() * 100);
+                        console.log(1);
+                        $bar.css('width', val + '%').parent().siblings('.progressbar-value').text(val + '%'); 
+                    } else {
+                        var total = 100;
+                        console.log(2);
+                        $bar.each(function() { 
+                            var val = Math.round(Math.random() * Math.min(70, total)); 
+                            total -= val;
+                            $(this).css('width', val + '%').parent().siblings('.progressbar-value').text(val);
+                        }) 
+                    }
+                }
+                $('#pageContent').on('mouseenter', '.progress', changeProgressBar); 
+            }
+        })
+    </script>
+</body>
+</html>
