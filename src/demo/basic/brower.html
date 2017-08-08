@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>浏览器可用性</title>
+    <link rel="stylesheet" href="../../Static/zui/css/zui.min.css">
+</head>
+<body>
+    <button class="default-tip">显示低版本浏览器提示信息</button>
+    <button class="diy-tip">自定义提示信息</button>
+
+
+    <script src="../../Static/jquery-2.1.4.min.js"></script>
+    <script src="../../Static/zui/js/zui.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            // 默认消息提示
+            $('.default-tip').click(() => {
+                $.zui.browser.tip()
+            })
+
+            // 自定义提示信息
+            $('.diy-tip').click(() => {
+                $.zui.browser.tip('哦...你的浏览器太老了，请升级！')
+            })
+        })
+    </script>
+</body>
+</html>

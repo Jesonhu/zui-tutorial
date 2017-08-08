@@ -6,8 +6,12 @@
       * 基于Bootstrap定制
       * 选择ZUI还是Bootstrap？
       * [官网参考](http://zui.sexy/#basic/intro)
-    * [约定](docs/basic/about.md)
-      * UI元素类型及定义
+    * [约定](docs/basic/about.md) **
+      * [UI元素类型及定义](http://zui.sexy/#basic/about/1)
+        * 基本控件
+        * 组件
+        * JS组件
+        * 视图
       * 通用状态和参数
       * 界面元素的命名
       * [官网参考](http://zui.sexy/#basic/about)
@@ -29,6 +33,7 @@
       * 独立组件
       * 组件清单
       * 使用 Gulp 定制
+      * [demo](demo/basic/brower.html)
       * [官网参考](http://zui.sexy/#basic/edition)
     * [浏览器可用性]()
       * 受支持的平台

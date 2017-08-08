@@ -6,8 +6,12 @@
       * 基于Bootstrap定制
       * 选择ZUI还是Bootstrap？
       * [官网参考](http://zui.sexy/#basic/intro)
-    * [约定](docs/basic/about.md)
-      * UI元素类型及定义
+    * [约定](docs/basic/about.md) **
+      * [UI元素类型及定义](http://zui.sexy/#basic/about/1)
+        * 基本控件
+        * 组件
+        * JS组件
+        * 视图
       * 通用状态和参数
       * 界面元素的命名
       * [官网参考](http://zui.sexy/#basic/about)
@@ -29,6 +33,7 @@
       * 独立组件
       * 组件清单
       * 使用 Gulp 定制
+      * [demo](demo/basic/brower.html)
       * [官网参考](http://zui.sexy/#basic/edition)
     * [浏览器可用性]()
       * 受支持的平台
@@ -363,108 +368,3 @@
     * 滚动监听
       * [官方参考](http://zui.sexy/#javascript/scrollspy)
   * [Part5-视图](docs/views/README.md)
-    * 树形菜单
-      * 综合示例
-      * 树形导航菜单
-      * 外观选项
-      * 用法
-      * 数据加载与更新
-      * [官方参考](http://zui.sexy/#view/tree)
-    * 数据表格
-      * 简单应用
-      * 启用排序功能
-      * 高亮选中行
-      * 综合示例
-      * 选项
-      * 事件
-      * 属性
-      * 数据配置
-      * [官方参考](http://zui.sexy/#view/datatable)
-    * 文本上传
-      * 综合示例
-      * 使用
-      * 选项
-      * 对象及属性
-      * 方法
-      * 事件
-      * 自定义 UI
-      * 处理服务器结果
-      * 使用七牛 Javascript SDK
-      * 获取 plupload 对象
-      * [官方参考](http://zui.sexy/#view/uploader)
-    * 日历
-      * 实例
-      * 使用方法
-      * [官方参考](http://zui.sexy/#view/calendar)
-    * 表单
-      * 基本形式
-      * 水平排列的表单
-      * 内联表单
-      * 帮助性文本
-      * 多选框和单选框
-      * 效验状态
-      * 使用 fieldset
-      * 静态文本
-      * 禁用状态和只读状态
-      * 标记必填项
-      * 更为紧凑的表单
-      * [官方参考](http://zui.sexy/#view/form)
-    * 文章
-      * 结构
-      * 综合示例
-      * 更紧凑的文章视图
-      * [官方参考](http://zui.sexy/#view/article)
-    * 卡片
-      * 结构
-      * 简单示例
-      * 卡片内容类型
-      * 无边框视图
-      * 紧凑视图
-      * [官方参考](http://zui.sexy/#view/card)
-    * 列表
-      * 结构
-      * 列表项
-      * 综合示例
-      * 更紧凑的列表
-      * [官方参考](http://zui.sexy/#view/list)
-    * 评论
-      * 结构
-      * 评论条目
-      * 评论表单
-      * 综合示例
-      * [官方参考](http://zui.sexy/#view/comment)
-    * 图表
-      * 创建图表
-      * 全局选项
-      * 曲线图
-      * 饼图
-      * 柱状图
-      * 兼容IE8浏览器
-      * [官方参考](http://zui.sexy/#view/chart)
-    * 组织结构图
-      * 综合示例
-      * 使用
-      * 节点对象
-      * 选项
-      * 方法
-      * 事件
-      * 其他问题
-      * [官方参考](http://zui.sexy/#view/treemap)
-    * 看板
-      * 综合示例
-      * HTML 结构
-      * 选项
-      * 处理看板交互过程
-      * [官方参考](http://zui.sexy/#view/board)
-    * 仪表盘
-      * 使用示例
-      * 选项
-      * 结构
-      * 用户个性化定制
-      * 操作按钮
-      * 从远程加载
-      * [官方参考](http://zui.sexy/#view/dashboard)
-    * 图片浏览
-      * 实例
-      * 用法
-      * [官方参考](http://zui.sexy/#view/lightbox)
