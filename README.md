@@ -238,6 +238,7 @@
       * 包含表格
       * 包含列表
       * 面板组
+      * [demo](./src/demo/component/panel.html)
       * [官方参考](http://zui.sexy/#component/panel)
     * 表格
       * 基本类型
