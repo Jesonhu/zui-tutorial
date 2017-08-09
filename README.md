@@ -107,7 +107,7 @@
       * 按钮的大小
       * 按钮的不同状态
       * 按钮的颜色
-      * [demo](./src/control/button.html)
+      * [demo](./src/demo/control/button.html)
       * [官方参考](http://zui.sexy/#control/button)
     * 进度条
       * 基本类型
@@ -195,6 +195,7 @@
       * 基本类型
       * 链接
       * 定制列表内容
+      * [demo](./src/demo/component/listgroup.html)
       * [官方参考](http://zui.sexy/#component/listgroup)
     * 导航
       * 主要导航
@@ -205,6 +206,7 @@
       * 垂直排列
       * 自适应宽度
       * 带标题的导航
+      * [demo](./src/demo/component/nav.html)
       * [官方参考](http://zui.sexy/#component/nav)
     * 导航条
       * 简单导航条
@@ -213,10 +215,12 @@
       * 使用表单元素
       * 将内容放置与导航右侧
       * 自适应宽度
+      * [demo](./src/demo/component/navbar.html)
       * [官方参考](http://zui.sexy/#component/navbar)
     * 垂直表单
       * 实例
       * 激活选中项
+      * [demo](./src/demo/component/menu.html)
       * [官方参考](http://zui.sexy/#component/menu)
     * 分页条
       * 各种分页导航
@@ -224,6 +228,7 @@
       * 圆角样式
       * 宽松样式
       * 两端对齐
+      * [demo](./src/demo/component/pager.html)
       * [官方参考](http://zui.sexy/#component/pager)
     * 面板
       * 基本类型

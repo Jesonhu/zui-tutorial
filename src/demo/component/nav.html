@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component-nav</title>
+    <link rel="stylesheet" href="../../Static/zui/css/zui.min.css">
+    <style lang="">
+        .nav > li.with-label > a{
+            height:38px;
+        }
+    </style>
+</head>
+<body>
+    <h2>主要导航</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <ul class="nav nav-primary">
+                    <li class="active"><a href="">首页</a></li>
+                    <li class="with-label">
+                        <a href="">动态
+                            <span class="label label-badge label-success">5</span>
+                        </a>
+                    </li>
+                    <li><a href="">项目</a></li>
+                    <li>
+                        <a href="" class="dropdown-toggle"
+                         data-toggle="dropdown">更多
+                            <span class="caret"></span>    
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="">任务</a></li>
+                            <li><a href="">Bug</a></li>
+                            <li><a href="">需求</a></li>
+                            <li><a href="">用例</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2></h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <ul class="nav nav-secondary">
+                    <li class="active"><a href="">首页</a></li>
+                    <li class="with-label">
+                        <a href="">
+                            动态
+                            <span class="label label-badge label-success">12</span>
+                        </a>
+                    </li>
+                    <li><a href="">项目</a></li>
+                    <li>
+                        <a href="" class="dropdown-toggle"
+                         data-toggle="dropdown">更多
+                         <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="">任务</a></li>
+                            <li><a href="">Bug</a></li>
+                            <li><a href="">需求</a></li>
+                            <li><a href="">用例</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- li.with-label 是自定义样式，修复了添加标签时高度多于其他li的问题 -->
+
+    <hr>
+    <h2>标签页导航</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="">首页</a></li>
+                    <li>
+                        <a href="">动态
+                            <span class="label label-badge label-success">6</span>
+                        </a>
+                    </li>
+                    <li><a href="">项目</a></li>
+                    <li>
+                        <a href="" class="dropdown-toggle"
+                         data-toggle="dropdown">更多
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">任务</a></li>
+                            <li><a href="">Bug</a></li>
+                            <li><a href="">需求</a></li>
+                            <li><a href="">用例</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>圆点导航</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <ul class="nav nav-pills">
+                    <li class="active"><a href="">首页</a></li>
+                    <li>
+                        <a href="">动态
+                            <span class="label label-badge label-success">22</span>
+                        </a>
+                    </li>
+                    <li><a href="">项目</a></li>
+                    <li>
+                        <a href="" class="dropdown-toggle"
+                         data-toggle="dropdown">更多
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="">任务</a></li>
+                            <li><a href="">Bug</a></li>
+                            <li><a href="">需求</a></li>
+                            <li><a href="">用例</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>禁用的导航链接</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <ul class="nav nav-primary">
+                    <li class="active"><a href="">首页</a></li>
+                    <li>
+                        <a href="">动态
+                            <span class="label label-badge label-success">22</span>
+                        </a>
+                    </li>
+                    <li class="disabled"><a href="">项目</a></li>
+                    <li>
+                        <a href="" class="dropdown-toggle"
+                         data-toggle="dropdown">更多
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="">任务</a></li>
+                            <li><a href="">Bug</a></li>
+                            <li><a href="">需求</a></li>
+                            <li><a href="">用例</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>垂直排列</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <ul class="nav nav-primary nav-stacked">
+                    <li class="active"><a href="">首页</a></li>
+                    <li>
+                        <a href="">动态
+                            <span class="label label-badge label-success pull-right">33</span>
+                        </a>
+                    </li>
+                    <li><a href="">项目</a></li>
+                    <li>
+                        <a href="" class="dropdown-toggle"
+                         data-toggle="dropdown">更多
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="">任务</a></li>
+                            <li><a href="">Bug</a></li>
+                            <li><a href="">需求</a></li>
+                            <li><a href="">用例</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <ul class="nav nav-secondary nav-stacked">
+                    <li class="active"><a href="">首页</a></li>
+                    <li><a href="">动态<span class="label label-badge label-success pull-right">33</span></a></li>
+                    <li><a href="">项目</a></li>
+                    <li>
+                        <a href="" class="dropdown-toggle"
+                         data-toggle="dropdown">更多
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">任务</a></li>
+                            <li><a href="">Bug</a></li>
+                            <li><a href="">需求</a></li>
+                            <li><a href="">用例</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <ul class="nav nav-tabs nav-stacked">
+                    <li class="active"><a href="">首页</a></li>
+                    <li><a href="">动态<span class="label label-badge label-info pull-right">33</span></a></li>
+                    <li><a href="">项目</a></li>
+                    <li>
+                        <a href="" class="dropdown-toggle"
+                         data-toggle="dropdown">更多
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">任务</a></li>
+                            <li><a href="">Bug</a></li>
+                            <li><a href="">需求</a></li>
+                            <li><a href="">用例</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="">首页</a></li>
+                    <li><a href="">动态<span class="label label-badge label-info pull-right">22</span></a></li>
+                    <li><a href="">项目</a></li>
+                    <li>
+                        <a href="" class="dropdown-toggle"
+                         data-toggle="dropdown">更多
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">任务</a></li>
+                            <li><a href="">Bug</a></li>
+                            <li><a href="">需求</a></li>
+                            <li><a href="">用例</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>水平排列</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <ul class="nav nav-primary nav-justified">
+                    <li class="active"><a href="">首页</a></li>
+                    <li>
+                        <a href="">动态
+                            <span class="label label-badge label-success pull-right">33</span>
+                        </a>
+                    </li>
+                    <li><a href="">项目</a></li>
+                    <li>
+                        <a href="" class="dropdown-toggle"
+                         data-toggle="dropdown">更多
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="">任务</a></li>
+                            <li><a href="">Bug</a></li>
+                            <li><a href="">需求</a></li>
+                            <li><a href="">用例</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <ul class="nav nav-secondary nav-justified">
+                    <li class="active"><a href="">首页</a></li>
+                    <li><a href="">动态<span class="label label-badge label-success pull-right">33</span></a></li>
+                    <li><a href="">项目</a></li>
+                    <li>
+                        <a href="" class="dropdown-toggle"
+                         data-toggle="dropdown">更多
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">任务</a></li>
+                            <li><a href="">Bug</a></li>
+                            <li><a href="">需求</a></li>
+                            <li><a href="">用例</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="active"><a href="">首页</a></li>
+                    <li><a href="">动态<span class="label label-badge label-info pull-right">33</span></a></li>
+                    <li><a href="">项目</a></li>
+                    <li>
+                        <a href="" class="dropdown-toggle"
+                         data-toggle="dropdown">更多
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">任务</a></li>
+                            <li><a href="">Bug</a></li>
+                            <li><a href="">需求</a></li>
+                            <li><a href="">用例</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <ul class="nav nav-pills nav-justified">
+                    <li class="active"><a href="">首页</a></li>
+                    <li><a href="">动态<span class="label label-badge label-info pull-right">22</span></a></li>
+                    <li><a href="">项目</a></li>
+                    <li>
+                        <a href="" class="dropdown-toggle"
+                         data-toggle="dropdown">更多
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">任务</a></li>
+                            <li><a href="">Bug</a></li>
+                            <li><a href="">需求</a></li>
+                            <li><a href="">用例</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--  水平排列：等分父元素同flex 
+        等分的实现：
+            li{
+                display:tabel-cell;
+                width:1%;
+            }
+    -->
+
+    <hr>
+    <h2>带标题的导航条</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <ul class="nav nav-primary">
+                    <li class="nav-heading">这是标题</li>
+                    <li class="active"><a href="">首页</a></li>
+                    <li><a href="">动态<span class="label label-badge label-info">22</span></a></li>
+                    <li><a href="">项目</a></li>
+                    <li>
+                        <a href="" class="dropdown-toggle"
+                         data-toggle="dropdown">更多
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">任务</a></li>
+                            <li><a href="">Bug</a></li>
+                            <li><a href="">需求</a></li>
+                            <li><a href="">用例</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <ul class="nav nav-pills nav-justified">
+                    <li class="nav-heading">这是标题</li>
+                    <li class="active"><a href="">首页</a></li>
+                    <li><a href="">动态<span class="label label-badge label-info">22</span></a></li>
+                    <li><a href="">项目</a></li>
+                    <li>
+                        <a href="" class="dropdown-toggle"
+                         data-toggle="dropdown">更多
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">任务</a></li>
+                            <li><a href="">Bug</a></li>
+                            <li><a href="">需求</a></li>
+                            <li><a href="">用例</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <br>
+                <ul class="nav nav-secondary nav-stacked">
+                    <li class="nav-heading">这是标题</li>
+                    <li class="active"><a href="">首页</a></li>
+                    <li><a href="">动态<span class="label label-badge label-info">22</span></a></li>
+                    <li><a href="">项目</a></li>
+                    <li>
+                        <a href="" class="dropdown-toggle"
+                         data-toggle="dropdown">更多
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">任务</a></li>
+                            <li><a href="">Bug</a></li>
+                            <li><a href="">需求</a></li>
+                            <li><a href="">用例</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../Static/jquery-2.1.4.min.js"></script>
+    <script src="../../Static/zui/js/zui.min.js"></script>
+</body>
+</html>

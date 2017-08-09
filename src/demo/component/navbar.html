@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component-navbar</title>
+    <link rel="stylesheet" href="../../Static/zui/css/zui.min.css">
+    <style lang="">
+        .icon-bg-success{
+            background:#38b03f;
+        }
+    </style>
+</head>
+<body>
+    <h2>简单导航条</h2>
+    <!-- 在导航条 .navbar 内使用 .container-fluid 或 .contianer 来控制导航项目是否居中或者两端对齐。
+        ??? 可是并没有发现效果
+    -->
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <nav class="navbar"
+                 role="navigation">
+                    <div class="container-fluid">
+                        <!--  header -->
+                        <div class="navbar-header">
+                            <!-- mobil show -->
+                            <button class="navbar-toggle" type="button"
+                             data-toggle="collapse"
+                             data-target=".navbar-collapse-con1">
+                                <span class="sr-only">切换导航</span>
+                                <span class="icon-bar icon-bg-success"></span>
+                                <span class="icon-bar icon-bg-success"></span>
+                                <span class="icon-bar icon-bg-success"></span>
+                            </button>
+                            <!-- logo -->
+                            <a href="" class="navbar-brand">Logo</a>
+                        </div>
+                        <!-- navbar content -->
+                        <div class="collapse navbar-collapse navbar-collapse-con1">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="">首页</a></li>
+                                <li><a href="">动态<span class="label label-badge label-info">22</span></a></li>
+                                <li><a href="">项目</a></li>
+                                <li class="dropdown">
+                                    <a href="" class="dropdown-toggle"
+                                     data-toggle="dropdown">更多
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu"
+                                     role="menu">
+                                        <li><a href="">任务</a></li>
+                                        <li><a href="">待办</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Bug</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <br>
+                <nav class="navbar"
+                 role="navigation">
+                    <div class="container">
+                        <!--  header -->
+                        <div class="navbar-header">
+                            <!-- mobil show -->
+                            <button class="navbar-toggle" type="button"
+                             data-toggle="collapse"
+                             data-target=".navbar-collapse-con2">
+                                <span class="sr-only">切换导航</span>
+                                <span class="icon-bar icon-bg-success"></span>
+                                <span class="icon-bar icon-bg-success"></span>
+                                <span class="icon-bar icon-bg-success"></span>
+                            </button>
+                            <!-- logo -->
+                            <a href="" class="navbar-brand">Logo</a>
+                        </div>
+                        <!-- navbar content -->
+                        <div class="collapse navbar-collapse navbar-collapse-con2">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="">首页</a></li>
+                                <li><a href="">动态<span class="label label-badge label-info">22</span></a></li>
+                                <li><a href="">项目</a></li>
+                                <li class="dropdown">
+                                    <a href="" class="dropdown-toggle"
+                                     data-toggle="dropdown">更多
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu"
+                                     role="menu">
+                                        <li><a href="">任务</a></li>
+                                        <li><a href="">待办</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Bug</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>默认导航条.navbar-default</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <nav class="navbar navbar-default">
+                    <div class="container">
+                        <!-- nabar header -->
+                        <div class="navbar-header">
+                            <!-- mobil bar -->
+                            <button class="navbar-toggle" type="button"
+                             data-toggle="collapse"
+                             data-target=".navbar-collapse-con3">
+                                <span class="sr-only"></span>
+                                <span class="icon-bar icon-bg-success"></span>
+                                <span class="icon-bar icon-bg-success"></span>
+                                <span class="icon-bar icon-bg-success"></span>
+                            </button>
+                            <!-- logo -->
+                            <a href="" class="navbar-brand">Logo</a>  
+                        </div>
+                        <div class="collapse navbar-collapse navbar-collapse-con3">
+                            <ul class="nav navbar-nav">
+                                <li class="acitve"><a href="">首页</a></li>
+                                <li><a href="">动态<span class="label label-badge label-info pull-right">22</span></a></li>
+                                <li><a href="">项目</a></li>
+                                <li class="dropdown">
+                                    <a href="" class="dropdown-toggle"
+                                     data-toggle="dropdown">更多
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu"
+                                     role="menu">
+                                        <li><a href="">任务</a></li>
+                                        <li><a href="">待办</a></li>
+                                        <li class="dotted"></li>
+                                        <li><a href="">Bug</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>深色导航条.navbar-inverse</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <nav class="navbar navbar-inverse"
+                 role="navigation">
+                    <!-- navbar header -->
+                    <div class="navbar-header">
+                        <!-- mobil show -->
+                        <button class="navbar-toggle" type="button" 
+                         data-toggle="collapse" 
+                         data-target=".navbar-con4">
+                            <span class="sr-only">切换导航</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>    
+                        </button>
+                        <!-- logo -->
+                        <a href="" class="navbar-brand">Logo</a>
+                    </div>
+                    <!-- navbar content -->
+                    <div class="collapse navbar-collapse navbar-con4">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="">首页</a></li>
+                            <li><a href="">动态<span class="label label-badge label-info">22</span></a></li>
+                            <li><a href="">项目</a></li>
+                            <li class="dropdonw">
+                                <a href="" class="dropdown-toggle"
+                                 data-toggle="dropdown">管理
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="">任务</a></li>
+                                    <li><a href="">待办</a></li>
+                                    <li class="divide"></li>
+                                    <li><a href="">Bug</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>导航栏中的表单</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <nav class="navbar navbar-default" 
+                 role="navigation">
+                    <div class="container-fluid">
+                        <!-- navbar header -->
+                        <div class="navbar-header">
+                            <!-- mobil show -->
+                            <button class="navbar-toggle" type="button" 
+                             data-toggle="collapse" 
+                             data-target=".navbar-con5">
+                                <span class="sr-only">切换导航</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <!-- logo -->
+                            <a href="" class="navbar-brand">Logo</a>
+                        </div>
+                        <!-- navbar content  -->
+                        <div class="collapse navbar-collapse navbar-con5">
+                            <!-- main con -->
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="">首页</a></li>
+                                <li><a href="">动态<span class="label label-badge label-info">22</span></a></li>
+                                <li><a href="">项目</a></li>
+                                <li class="dropdown">
+                                    <a href="" class="dropdown-toggle"
+                                     data-toggle="dropdown">更多
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="">任务</a></li>
+                                        <li><a href="">待办</a></li>
+                                        <li class="divide"></li>
+                                        <li><a href="">Bug</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <!-- navbar from -->
+                            <form action="/#" class="navbar-form navbar-left">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="请输入搜索内容">
+                                </div>
+                                <button class="btn btn-default" type="submit">搜索</button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+                <br>
+                <nav class="navbar navbar-default" 
+                 role="navigation">
+                    <div class="container-fluid">
+                        <!-- navbar header -->
+                        <div class="navbar-header">
+                            <!-- mobil show -->
+                            <button class="navbar-toggle" type="button" 
+                             data-toggle="collapse" 
+                             data-target=".navbar-con6">
+                                <span class="sr-only">切换导航</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <!-- logo -->
+                            <a href="" class="navbar-brand">Logo</a>
+                        </div>
+                        <!-- navbar content  -->
+                        <div class="collapse navbar-collapse navbar-con6">
+                            <!-- main con -->
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="">首页</a></li>
+                                <li><a href="">动态<span class="label label-badge label-info">22</span></a></li>
+                                <li><a href="">项目</a></li>
+                                <li class="dropdown">
+                                    <a href="" class="dropdown-toggle"
+                                     data-toggle="dropdown">更多
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="">任务</a></li>
+                                        <li><a href="">待办</a></li>
+                                        <li class="divide"></li>
+                                        <li><a href="">Bug</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <!-- navbar from -->
+                            <form action="/#" class="navbar-form navbar-right"
+                             role="search">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="请输入搜索内容">
+                                </div>
+                                <button class="btn btn-default" type="submit">搜索</button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>将内容放置在导航右侧</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <nav class="navbar navbar-default"
+                 role="navigation">
+                    <!-- navbar header  -->
+                    <div class="navbar-header">
+                        <!-- mobil show -->
+                        <buttton class="navbar-toggle" type="button" 
+                         data-toggle="collapse" 
+                         data-target=".navbar-con7">
+                            <span class="sr-only">切换导航</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </buttton>
+                        <!-- logo -->
+                        <a href="" class="navbar-brand">Logo</a>
+                    </div>
+                    <!-- navbar content -->
+                    <div class="collapse navbar-collapse navbar-con7">
+                        <!-- basic nav -->
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="">首页</a></li>
+                            <li><a href="">动态<span class="label label-badge label-info pull-right">22</span></a></li>
+                            <li><a href="">项目</a></li>
+                            <li class="dropdown">
+                                <a href="" class="dropdown-toggle"
+                                 data-toggle="dropdown">更多
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="">任务</a></li>
+                                    <li><a href="">待办</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="">Bug</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <!-- right content -->
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="">帮助</a></li>
+                            <li class="dropdonw">
+                                <a href="" class="dropdown"
+                                 data-toggle="dropdown">探索
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="">敏捷开发</a></li>
+                                    <li><a href="">HTML5</a></li>
+                                    <li><a href="">JavaScript</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="">探索宇宙</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>自适应导航</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <nav class="navbar"
+                    role="navigation">
+                    <div class="container-fluid">
+                        <!--  header -->
+                        <div class="navbar-header">
+                            <!-- mobil show -->
+                            <button class="navbar-toggle" type="button"
+                                data-toggle="collapse"
+                                data-target=".navbar-con8">
+                                <span class="sr-only">切换导航</span>
+                                <span class="icon-bar icon-bg-success"></span>
+                                <span class="icon-bar icon-bg-success"></span>
+                                <span class="icon-bar icon-bg-success"></span>
+                            </button>
+                            <!-- logo -->
+                            <a href="" class="navbar-brand">Logo</a>
+                        </div>
+                        <!-- navbar content -->
+                        <div class="collapse navbar-collapse navbar-con8">
+                            <ul class="nav navbar-nav nav-justified">
+                                <li class="active"><a href="">首页</a></li>
+                                <li><a href="">动态<span class="label label-badge label-info">22</span></a></li>
+                                <li><a href="">项目</a></li>
+                                <li class="dropdown">
+                                    <a href="" class="dropdown-toggle"
+                                    data-toggle="dropdown">更多
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu"
+                                    role="menu">
+                                        <li><a href="">任务</a></li>
+                                        <li><a href="">待办</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Bug</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- 
+        在.nav上添加.nav-justified。
+        原理还是 li{
+            display:table-cell;
+            width:1%;
+        }
+        默认自适应宽度导航不适合加logo
+     -->
+
+    <script src="../../Static/jquery-2.1.4.min.js"></script>
+    <script src="../../Static/zui/js/zui.min.js"></script>
+</body>
+</html>

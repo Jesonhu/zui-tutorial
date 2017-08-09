@@ -107,7 +107,7 @@
       * 按钮的大小
       * 按钮的不同状态
       * 按钮的颜色
-      * [demo](./src/control/button.html)
+      * [demo](./src/demo/control/button.html)
       * [官方参考](http://zui.sexy/#control/button)
     * 进度条
       * 基本类型
@@ -165,7 +165,7 @@
       * 动态隐藏与显示
       * [demo](./src/demo/control/scrollbar.html)
       * [官方参考](http://zui.sexy/#control/scrollbar)
-  * [Part3-组件](docs/components/README.md)
+  * [Part3-组件](docs/component/README.md)
     * 消息框
       * 不同感情色彩的消息框
       * 使用图标
@@ -173,6 +173,7 @@
       * 块级消息
       * 消息框中的链接
       * 可以关闭的消息框
+      * [demo](./src/demo/component/alert.html)
       * [官方参考](http://zui.sexy/#component/alert)
     * 代码
       * 内联代码
@@ -188,11 +189,13 @@
       * 带下拉菜单的按钮
       * 使用Select
       * 分段按钮
+      * [demo](./src/demo/component/inputgroup.html)
       * [官方参考](http://zui.sexy/#component/inputgroup)
     * 列表组
       * 基本类型
       * 链接
       * 定制列表内容
+      * [demo](./src/demo/component/listgroup.html)
       * [官方参考](http://zui.sexy/#component/listgroup)
     * 导航
       * 主要导航
@@ -203,6 +206,7 @@
       * 垂直排列
       * 自适应宽度
       * 带标题的导航
+      * [demo](./src/demo/component/nav.html)
       * [官方参考](http://zui.sexy/#component/nav)
     * 导航条
       * 简单导航条
@@ -211,10 +215,12 @@
       * 使用表单元素
       * 将内容放置与导航右侧
       * 自适应宽度
+      * [demo](./src/demo/component/navbar.html)
       * [官方参考](http://zui.sexy/#component/navbar)
     * 垂直表单
       * 实例
       * 激活选中项
+      * [demo](./src/demo/component/menu.html)
       * [官方参考](http://zui.sexy/#component/menu)
     * 分页条
       * 各种分页导航
@@ -222,6 +228,7 @@
       * 圆角样式
       * 宽松样式
       * 两端对齐
+      * [demo](./src/demo/component/pager.html)
       * [官方参考](http://zui.sexy/#component/pager)
     * 面板
       * 基本类型
@@ -383,3 +390,108 @@
     * 滚动监听
       * [官方参考](http://zui.sexy/#javascript/scrollspy)
   * [Part5-视图](docs/views/README.md)
+    * 树形菜单
+      * 综合示例
+      * 树形导航菜单
+      * 外观选项
+      * 用法
+      * 数据加载与更新
+      * [官方参考](http://zui.sexy/#view/tree)
+    * 数据表格
+      * 简单应用
+      * 启用排序功能
+      * 高亮选中行
+      * 综合示例
+      * 选项
+      * 事件
+      * 属性
+      * 数据配置
+      * [官方参考](http://zui.sexy/#view/datatable)
+    * 文本上传
+      * 综合示例
+      * 使用
+      * 选项
+      * 对象及属性
+      * 方法
+      * 事件
+      * 自定义 UI
+      * 处理服务器结果
+      * 使用七牛 Javascript SDK
+      * 获取 plupload 对象
+      * [官方参考](http://zui.sexy/#view/uploader)
+    * 日历
+      * 实例
+      * 使用方法
+      * [官方参考](http://zui.sexy/#view/calendar)
+    * 表单
+      * 基本形式
+      * 水平排列的表单
+      * 内联表单
+      * 帮助性文本
+      * 多选框和单选框
+      * 效验状态
+      * 使用 fieldset
+      * 静态文本
+      * 禁用状态和只读状态
+      * 标记必填项
+      * 更为紧凑的表单
+      * [官方参考](http://zui.sexy/#view/form)
+    * 文章
+      * 结构
+      * 综合示例
+      * 更紧凑的文章视图
+      * [官方参考](http://zui.sexy/#view/article)
+    * 卡片
+      * 结构
+      * 简单示例
+      * 卡片内容类型
+      * 无边框视图
+      * 紧凑视图
+      * [官方参考](http://zui.sexy/#view/card)
+    * 列表
+      * 结构
+      * 列表项
+      * 综合示例
+      * 更紧凑的列表
+      * [官方参考](http://zui.sexy/#view/list)
+    * 评论
+      * 结构
+      * 评论条目
+      * 评论表单
+      * 综合示例
+      * [官方参考](http://zui.sexy/#view/comment)
+    * 图表
+      * 创建图表
+      * 全局选项
+      * 曲线图
+      * 饼图
+      * 柱状图
+      * 兼容IE8浏览器
+      * [官方参考](http://zui.sexy/#view/chart)
+    * 组织结构图
+      * 综合示例
+      * 使用
+      * 节点对象
+      * 选项
+      * 方法
+      * 事件
+      * 其他问题
+      * [官方参考](http://zui.sexy/#view/treemap)
+    * 看板
+      * 综合示例
+      * HTML 结构
+      * 选项
+      * 处理看板交互过程
+      * [官方参考](http://zui.sexy/#view/board)
+    * 仪表盘
+      * 使用示例
+      * 选项
+      * 结构
+      * 用户个性化定制
+      * 操作按钮
+      * 从远程加载
+      * [官方参考](http://zui.sexy/#view/dashboard)
+    * 图片浏览
+      * 实例
+      * 用法
+      * [官方参考](http://zui.sexy/#view/lightbox)

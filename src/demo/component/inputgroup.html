@@ -59,5 +59,207 @@
             </div>
         </div>
     </div>
+
+    <hr>
+    <h2>单选框和复选框</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="checkbox">
+                    </span>
+                    <span class="input-group-addon fix-border">
+                        <input type="checkbox">
+                    </span>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="radio" name="type">
+                    </span>
+                    <input type="text" class="form-control">
+                    <span class="input-group-addon">
+                        <input type="radio" name="type">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>带按钮</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn" type="button">搜索</button>
+                    </span>
+                    <input type="text" class="form-control" placeholder="用户名">
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="用户名">
+                    <span class="input-group-btn">
+                        <button class="btn" type="button">搜索</button>
+                    </span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">搜索</button>
+                    </span>
+                    <input type="text" class="form-control">
+                    <span class="input-group-addon">
+                        <i class="icon icon-search"></i>
+                    </span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn" type="button">搜索</button>
+                    </span>
+                    <input type="text" class="form-control">
+                    <span class="input-group-btn fix-border">
+                        <button class="btn" type="button">搜索</button>
+                    </span>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>带下拉菜单的按钮</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button class="btn" type="button"
+                         data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu pull-right"
+                         role="menu">
+                            <li><a href="">选项</a></li>
+                            <li><a href="">另一个选项</a></li>
+                            <li><a href="">更多选项</a></li>
+                            <li class="divider"></li>
+                            <li><a href="">特别内容</a></li>
+                        </ul>
+                    </div>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control">
+                    <div class="input-group-btn">
+                        <button class="btn dropdown-toggle" type="button"
+                         data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu pull-right"
+                         role="menu">
+                            <li><a href="">选项</a></li>
+                            <li><a href="">另一个选项</a></li>
+                            <li><a href="">更多选项</a></li>
+                            <li class="divider"></li>
+                            <li><a href="">特别内容</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 下拉在左侧,button可以不要.dropdown-toggle。
+                    但是在右侧的时候,button如果需要圆角必须要加上.dropdown-toggle 
+                -->
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>使用select</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="input-group">
+                    <select name="" id="" class="form-control">
+                        <option value="eat">吃饭</option>
+                        <option value="sleep">睡觉</option>
+                        <option value="coding">写代码</option>
+                    </select>
+                    <span class="input-group-btn">
+                        <button class="btn" type="button">搜索</button>
+                    </span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">地址</span>
+                    <select name="" id="" class="form-control">
+                        <option value="provice">省份</option>
+                        <option value="beijing">北京</option>
+                        <option value="shanghai">上海</option>
+                        <option value="wuhan">湖北</option>
+                    </select>
+                    <span class="input-group-addon fix-padding fix-border"></span>
+                    <select name="" id="" class="form-control">
+                        <option value="provice">市/县</option>
+                        <option value="beijing">重庆</option>
+                        <option value="shanghai">广州</option>
+                    </select>
+                    <span class="input-group-addon fix-padding fix-border"></span>
+                    <input type="text" class="form-control" placeholder="社区/乡/镇">
+                    <div class="input-group-btn">
+                        <button class="btn" type="button">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>分段按钮</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn" type="button">主要选项</button>
+                        <button class="btn" type="button" 
+                         data-toggle="dropdown">
+                            <span class="caret"></span>
+                            <span class="sr-only"></span>
+                        </button>
+                        <ul class="dropdown-menu pull-left" 
+                         role="menu">
+                            <li><a href="">选项</a></li>
+                            <li><a href="">另一个选项</a></li>
+                            <li><a href="">更多选项</a></li>
+                            <li class="divider"></li>
+                            <li><a href="">特别内容</a></li>
+                        </ul>
+                    </span>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn" type="button">主要选项</button>
+                        <button class="btn" type="button" 
+                         data-toggle="dropdown">
+                            <span class="caret"></span>
+                            <span class="sr-only"></span>
+                        </button>
+                        <ul class="dropdown-menu pull-right"
+                         role="menu">
+                            <li><a href="">选项</a></li>
+                            <li><a href="">另一个选项</a></li>
+                            <li><a href="">更多选项</a></li>
+                            <li class="divider"></li>
+                            <li><a href="">特别内容</a></li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../Static/jquery-2.1.4.min.js"></script>
+    <script src="../../Static/zui/js/zui.min.js"></script>
 </body>
 </html>

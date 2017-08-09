@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component-pager</title>
+    <link rel="stylesheet" href="../../Static/zui/css/zui.min.css">
+</head>
+<body>
+    <h2>各种分页导航</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <ul class="pager">
+                    <li class="previous"><a href="javascript:;"><<</a></li>
+                    <li class="active"><a href="javascript:;">1</a></li>
+                    <li><a href="javascript:;">2</a></li>
+                    <li><a href="javascript:;">3</a></li>
+                    <li class="next"><a href="javascript:;">>></a></li>
+                </ul>
+                <br>
+                <ul class="pager">
+                    <li class="previous"><a href="javascript:;"><<上一页</a></li>
+                    <li class="active"><a href="javascript:;">1</a></li>
+                    <li><a href="javascript:;">2</a></li>
+                    <li><a href="javascript:;">3</a></li>
+                    <li class="next"><a href="javascript:;">>>下一页</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../../Static/jquery-2.1.4.min.js"></script>
+    <script src="../../Static/zui/js/zui.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.pager > li:not(.previous, .next)').on('click', function() {
+                $(this).addClass('active')
+                .siblings().removeClass('active')
+            })
+        })
+    </script>
+</body>
+</html>

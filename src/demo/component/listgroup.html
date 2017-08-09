@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component-listgroup</title>
+    <link rel="stylesheet" href="../../Static/zui/css/zui.min.css">
+</head>
+<body>
+    <h2>基本类型</h2>
+    <div class="wrap with-padding">
+        <div class="container">
+            <div class="row">
+                <div class="list-group">
+                    <li class="list-group-item"><a href="">项目</a></li>
+                    <li class="list-group-item"><a href="">待办</a></li>
+                    <li class="list-group-item"><a href="">需求</a></li>
+                    <li class="list-group-item"><a href="">任务</a></li>
+                    <li class="list-group-item"><a href="">Bug</a></li>
+                    <li class="list-group-item">用例</li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>链接</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="list-group">
+                    <a href="" class="list-group-item">用div > a实现列表组</a>
+                    <a href="" class="list-group-item">待办</a>
+                    <a href="" class="list-group-item">需求</a>
+                    <a href="" class="list-group-item active">任务</a>
+                    <a href="" class="list-group-item">Bug</a>
+                    <a href="" class="list-group-item">用例</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>定制列表内容</h2>
+    <div class="wrap3">
+        <div class="container">
+            <div class="row">
+                <div class="list-group">
+                    <a href="javascript:;" class="list-group-item">
+                        <h4 class="list-group-item-heading">项目</h4>
+                        <p class="list-group-item-text text-muted">共12个新条目</p>
+                    </a>
+                    <a href="javascript:;" class="list-group-item active">
+                        <h4 class="list-group-item-heading">项目2</h4>
+                        <p class="list-group-item-text text-muted">共12个新条目</p>
+                    </a>
+                    <a href="javascript:;" class="list-group-item">
+                        <h4 class="list-group-item-heading">项目3</h4>
+                        <p class="list-group-item-text text-muted">共12个新条目</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 
+        .text-muted 辅助类》文本颜色
+     -->
+    
+
+
+    <script src="../../Static/jquery-2.1.4.min.js"></script>
+    <script src="../../Static/zui/js/zui.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            $('.wrap3 .list-group-item').on('click', function() {
+                $(this).addClass('active')
+                .siblings().removeClass('active')
+            })
+        })
+    </script>
+</body>
+</html>

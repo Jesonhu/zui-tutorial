@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component-menu</title>
+    <link rel="stylesheet" href="../../Static/zui/css/zui.min.css">
+</head>
+<body>
+    <h2>实例</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <nav class="menu" style="width:200px;"
+                 data-ride="menu">
+                    <button class="btn btn-primary">
+                        <i class="icon icon-edit"></i>编辑
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="icon icon-cloud-upload"></i>上传
+                    </button>
+                    <ul class="nav nav-primary">
+                        <li><a href="javascript:;"><i class="icon icon-th"></i>面板</a></li>
+                        <li><a href="javascript:;"><i class="icon icon-user"></i>用户</a></li>
+                        <li class="nav-parent">
+                            <a href="javascript:;"><i class="icon icon-time">发布时间</i></a>
+                            <ul class="nav">
+                                <li><a href="javascript:;">今天</a></li>
+                                <li><a href="javascript:;">明天</a></li>
+                                <li><a href="javascript:;">昨天</a></li>
+                                <li><a href="javascript:;">这周</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:;"><i class="icon icon-trash"></i>删除</a></li>
+                        <li><a href="javascript:;"><i class="icon icon-list-ul"></i>所有</a></li>
+                        <li class="nav-parent">
+                            <a href="javascript:;"><i class="icon icon-tasks">状态</i></a>
+                            <ul class="nav">
+                                <li class="nav-parent">
+                                    <a href="javascript:;"><i class="icon icon-circle-blank"></i>准备</a>
+                                    <ul class="nav">
+                                        <li><a href="javascript:;"><i class="icon icon-trash">删除</i></a></li>
+                                        <li><a href="javascript:;"><i class="icon icon-ok"></i>保留</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:;"><i class="icon icon-play-sign"></i>正在进行中</a></li>
+                                <li><a href="javascript:;"><i class="icon icon-ok-sign"></i>完成</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!--你需要手动为 .menu .nav 内的菜单项 <li> 元素动态增加 .active 类来应用激活时的外观。  
+        即：失去光标后仍然保留最后的状态
+        js只需要添加 .active就可以了。样式以及写好    
+    -->
+
+    <script src="../../Static/jquery-2.1.4.min.js"></script>
+    <script src="../../Static/zui/js/zui.min.js"></script>
+    <script>
+        /**
+         * on(events,[selector],[data],fn) 1.7+添加
+         * events：一个或多个事件，可以用空格分割事件，可选的命名空间如 keydown.myPlugin
+         * selector: 一个选择器字符串用于过滤器的触发事件的选择器元素的后代。
+         *           如果选择的< null或省略，当它到达选定的元素，事件总是触发。
+         * fn: 事件触发时执行
+         */
+        
+        $(document).ready(function() {
+            // :not()删除匹配的元素 
+            // closest(expr|object|element) jQuery 1.3新增。从元素本身开始，逐级向上级元素匹配，并返回最先匹配的元素
+            $('.menu .nav a').on('click', function() {
+                $('.menu .nav li').removeClass('active')
+                $(this).parent().addClass('active')
+            })
+        })
+    </script>
+</body>
+</html>
