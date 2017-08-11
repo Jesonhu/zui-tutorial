@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript-tab</title>
+    <link rel="stylesheet" href="../../Static/zui/css/zui.min.css">
+</head>
+<body>
+    <h2>结构</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <!-- tab title -->
+                <ul class="nav nav-primary">
+                    <li class="active">
+                        <a href="#tabCon1"
+                         data-toggle="tab"
+                         data-target="#tabCon1">标签1</a>
+                    </li>
+                    <li>
+                        <a href="#tabCon2"
+                         data-tab>标签2</a>
+                    </li>
+                    <li>
+                        <a href="#tabCon3"
+                         data-tab>标签3</a>
+                    </li>
+                </ul>
+                <!-- tab content -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tabCon1">
+                        <p>内容1</p>
+                    </div>
+                    <div class="tab-pane" id="tabCon2">
+                        <p>内容2</p>
+                    </div>
+                    <div class="tab-pane" id="tabCon3">
+                        <p>内容3</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>动画效果</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="panel">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#conTab0201"
+                             data-toggle="tab"
+                             data-target="#conTab0201">标签1</a>
+                        </li>
+                        <li>
+                            <a href="#conTab0202"
+                             data-toggle="tab"
+                             data-target="#conTab0202">标签2</a>
+                        </li>
+                        <li><a href="#conTab0203"
+                             data-toggle="tab"
+                             data-target="#conTab0203">标签3</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade active in" id="conTab0201">
+                            <p>我是内容1</p>
+                        </div>
+                        <div class="tab-pane fade" id="conTab0202">
+                            <p>我是内容2</p>
+                        </div>
+                        <div class="tab-pane fade" id="conTab0203">
+                            <p>我是内容3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>垂直标签页</h2>
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-3">
+                    <ul class="nav nav-tabs nav-stacked">
+                        <li class="active">
+                            <a href="#tabCon0301" 
+                            data-toggle="tab" 
+                            data-target="#tabCon0301">标题1</a>
+                        </li>
+                        <li>
+                            <a href="#tabCon0302" 
+                            data-toggle="tab" 
+                            data-target="#tabCon0302">标题2</a>
+                        </li>
+                        <li>
+                            <a href="#tabCon0303" 
+                            data-toggle="tab" 
+                            data-target="#tabCon0303">标题3</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xs-9">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabCon0301">
+                            <p>内容1</p>
+                        </div>
+                        <div class="tab-pane" id="tabCon0302">
+                            <p>内容2</p>
+                        </div>
+                        <div class="tab-pane" id="tabCon0303">
+                            <p>内容3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../Static/jquery-2.1.4.min.js"></script>
+    <script src="../../Static/zui/js/zui.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 标签页正在显示
+            $('[data-toggle="tab"]').on('show.zui.tab', (e) => {
+                console.log('now active tab', e.target);
+                console.log('prev tab', e.relatedTarget);
+            });
+
+            // 标签页动画执行完毕
+            $('[data-toggle="tab"]').on('shown.zui.tab', (e) => {
+                console.log('now active tab', e.target);
+                console.log('prev active tab', e.relatedTarget);
+            });
+        });
+    </script>
+
+</body>
+</html>

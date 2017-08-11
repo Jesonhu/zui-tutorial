@@ -251,16 +251,19 @@
       * 固定布局的表格
       * 色彩主题
       * 响应式表格
+      * [demo](./src/demo/component/table.html)
       * [官方参考](http://zui.sexy/#component/table)
     * 按钮组
       * 类型
       * 变化
+      * [demo](./src/demo/component/buttongrup.html)
       * [官方参考](http://zui.sexy/#component/buttongroup)
   * [Part4-JS插件](docs/plugins/README.md)
     * 本地存储
       * 实例
       * 如何使用
       * 本地页面存储
+      * [demo](./src/demo/javascript/store.html)
       * [官方参考](http://zui.sexy/#javascript/store)
     * 对话框
       * 实例
@@ -270,6 +273,7 @@
       * 禁用动画效果
       * 关闭对话框
       * 如何使用
+      * [demo](./src/demo/javascript/modal.html)
       * [官方参考](http://zui.sexy/#javascript/modal)
     * 对话框触发器
       * 加载远程内容
@@ -279,6 +283,7 @@
       * 自定义头部
       * 可拖动的对话框
       * 如何使用
+      * [demo](./src/demo/javascript/modaltrigger.html)
       * [官方参考](http://zui.sexy/#javascript/modaltrigger)
     * 下拉菜单
       * 结构
@@ -290,6 +295,7 @@
       * 禁用的菜单项
       * 自定义菜单
       * 在导航或导航条中使用
+      * [demo](./src/demo)
       * [官方参考](http://zui.sexy/#javascript/dropdown)
     * 标签页
       * 结构
@@ -297,6 +303,7 @@
       * 垂直标签页
       * 方法
       * 事件
+      * [demo](./src/demo/javascript/tab.html)
       * [官方参考](http://zui.sexy/#javascript/tab)
     * 漂浮消息
       * 示例
@@ -305,6 +312,7 @@
       * 自定义操作按钮
       * 禁用动画效果
       * 如何使用
+      * [demo](./src/demo/javascript/messager.html)
       * [官方参考](http://zui.sexy/#javascript/messager)
     * 提示信息
       * 示例
@@ -496,3 +504,11 @@
       * 实例
       * 用法
       * [官方参考](http://zui.sexy/#view/lightbox)
+
+
+  ## 说明
+    #### 2017-8-11
+    > 由于在javascrip组件里面发现其他的有些内容与组件内容重复。如：
+    > [下拉菜单](http://zui.sexy/#javascript/dropdown)
+    > 以上分类
+    > 没有使用js通过html标签属性控制，故没有添加demo，直接看官网案例

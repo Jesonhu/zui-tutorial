@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript-modaltrigger</title>
+    <link rel="stylesheet" href="../../Static/zui/css/zui.min.css">
+</head>
+<body>
+    <!-- 
+        与对话框 modal.html当前区别是不需要在html中写代码。
+        对话框触发器中对话框的内容来自远程请求或者js设置
+     -->
+
+     <!-- 由于涉及到ajax，该例子跨域或者没正确的ajax服务器。演示效果失败，但是实际项目中应该是可以显示的 
+          data-remote="" ajax标识
+     -->
+    <h2>远程加载ajax内容</h2>
+    <button class="btn btn-primay" 
+     data-toggle="modal" 
+     data-remote="partial/remote-modal.html">Ajax对话框</button>
+
+     <!-- data-iframe="" iframe标识
+          data-toggle="" 区分触发的是哪种类型的动作  
+    -->
+    <h2>远程加载iframe</h2>
+    <button class="btn btn-success" 
+     data-toggle="modal"
+     data-iframe="http://zui.sexy/docs/partial/iframe-modal.html">iframe对话框</button>
+
+     <!-- 指定加载的内容 -->
+    <h2>指定内容文本</h2>
+    <!-- html标签 data-custom指定 -->
+    <button class="btn btn-primary" type="button" 
+     data-custom="通过html标签属性指定的自定义内容" 
+     data-toggle="modal">指定内容文本</button>
+    <!-- 通过js办法触发 -->
+    <button class="btn btn-success" id="triggerButton">我是js触发的按钮</button>
+    <!-- 通过触发器对象触发 -->
+
+    <h2>指定页面元素作为内容</h2>
+    <div id="myModalAlert" class="alert alert-success with-icon hide">
+        <i class="icon icon-ok"></i>
+        <div class="content">我希望在对话框中看到此消息</div>
+    </div>
+    <!-- 通过html属性 data-custom -->
+    <button class="btn btn-success" type="button" 
+     data-toggle="modal" 
+     data-custom="#myModalAlert">点击触发</button>
+
+    <script src="../../Static/jquery-2.1.4.min.js"></script>
+    <script src="../../Static/zui/js/zui.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#triggerButton').modalTrigger({
+                custom: '<h1>此内容是自定义的</h1><p>呵呵....</p>'
+            })
+            (new $.zui.modalTrigger({custom: '自定义内容'})).show();
+        });
+    </script>
+
+</body>
+</html>

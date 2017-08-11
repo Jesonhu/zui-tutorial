@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript-messager</title>
+    <link rel="stylesheet" href="../../Static/zui/css/zui.min.css">
+</head>
+<body>
+    <h2>示例</h2>
+    <button class="btn btn-primary btn01" type="button">触发漂浮信息</button>
+
+    <h2>显示位置</h2>
+    <button class="btn btn0201">上方</button>
+    <button class="btn btn0202">下方</button>
+    <button class="btn btn0203">左上</button>
+    <button class="btn btn0204">右上</button>
+    <button class="btn btn0205">左下</button>
+    <button class="btn btn0206">右下</button>
+    <button class="btn btn0207">中间</button>
+    
+    <h2>颜色主题</h2>
+    <button class="btn btn0301">默认</button>
+    <button class="btn btn-primary btn0302">主要</button>
+    <button class="btn btn-info btn0303">信息</button>
+    <button class="btn btn-danger btn0304">危险</button>
+    <button class="btn btn-success btn0305">成功</button>
+    <button class="btn btn-warning btn0306">警告</button>
+    <button class="btn btn-important btn0307">重要</button>
+    <button class="btn btn-special btn0308">特别</button>
+
+    h2
+
+
+    <script src="../../Static/jquery-2.1.4.min.js"></script>
+    <script src="../../Static/zui/js/zui.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 触发消息框
+            $('.btn01').on('click', () => {
+                new $.zui.Messager('这是一个浮动信息。', {
+                    icon: 'bell'
+                }).show();
+            });
+
+            // 显示位置
+            const posArray = ['top', 'bottom', 'top-left', 'top-right', 'bottom-left', 'bottom-right', 'center'];
+            for( let i = 0; i < posArray.length; i++ ){
+                let curentIndex = i + 1;
+                let msgIndex = i - 1;
+                $('.btn020' + curentIndex).on('click', () => {
+                    new $.zui.Messager('这是一个浮动信息。', {
+                        icon: 'heart',
+                        placement: posArray[i]
+                    }).show();
+                });
+            }
+
+            // 颜色主题
+            const colThemArray = ['default', 'primary', 'info', 'danger', 'success', 'warning', 'important', 'special'];
+            for( let i = 0; i < colThemArray.length; i++ ){
+                let curentIndex = i + 1;
+                let msgIndex = i - 1;
+                $('.btn030' + curentIndex).on('click', () => {
+                    new $.zui.Messager('这是一个浮动信息。', {
+                        icon: 'heart',
+                        type: colThemArray[i]
+                    }).show();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../Static/zui/css/zui.min.css">
+</head>
+<body>
+    <!-- 实例 -->
+        <!-- 静态实例  -->
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button">
+                        <span
+                            aria-hidden="true">x</span>
+                        <span class="sr-only">关闭</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>主题内容</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" type="button"
+                        data-dismiss="modal">关闭</button>
+                    <button class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- 动态实例 -->
+    <button class="btn btn-primary" type="button" 
+     data-toggle="modal" 
+     data-target="#myModal1">启动对话框</button>    
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="modal fade" id="myModal1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- modal title -->
+                            <div class="modal-header">
+                                <button class="close" type="button" 
+                                 data-dismiss="modal">
+                                    <span aria-hidden="true">x</span>
+                                    <span class="sr-only">关闭</span>
+                                </button>
+                                <h4 class="modal-title">标题</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>主题内容</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" type="button" data-dismiss="modal">关闭</button>
+                                <button class="btn btn-primary" type="button">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 设置对话框显示位置 -->
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="modal fade" id="myModal02">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" type="button" 
+                                 data-dismiss="modal">
+                                    <span aria-hidden="true">x</span>
+                                </button>
+                                <h4 class="modal-title">标题</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>对话框内容</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" type="button"
+                                 data-dismiss="modal">关闭</button>
+                                <button class="btn btn-primary">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="button" 
+     data-toggle="modal" 
+     data-target="#myModal02"
+     data-position="fit">默认位置</button>
+    <button class="btn btn-primary" type="button" 
+     data-toggle="modal" 
+     data-target="#myModal02"
+     data-position="center">窗口中间</button>
+    <button class="btn btn-primary" type="button" 
+     data-toggle="modal" 
+     data-target="#myModal02"
+     data-position="0">靠近上方</button>
+    <button class="btn btn-primary" type="button" 
+     data-toggle="modal" 
+     data-target="#myModal02"
+     data-position="100px">距离上方100px</button>
+
+    <hr>
+    <h2>改变对话框大小</h2>
+    <button class="btn" type="button"
+     data-toggle="modal"
+     data-target="#myModal0301">大对话框</button>
+    <button class="btn" type="button"
+     data-toggle="modal"
+     data-target="#myModal0302">小对话框</button>
+    <button class="btn" type="button"
+     data-toggle="modal"
+     data-target="#myModal0303">全屏对话框</button>
+    <div class="modal fade" id="myModal0301">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                    <h4 class="modal-title">标题1</h4>
+                </div>
+                <div class="modal-body">
+                    <p>主题内容...</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" type="button" data-dismiss="modal">关闭</button>
+                    <button class="btn btn-primary" type="button">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal0302">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                    <h4 class="modal-title">标题2</h4>
+                </div>
+                <div class="modal-body">
+                    <p>主题内容...</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" type="button" data-dismiss="modal">关闭</button>
+                    <button class="btn btn-primary" type="button">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal0303">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                    <h4 class="modal-title">标题3</h4>
+                </div>
+                <div class="modal-body">
+                    <p>主题内容...</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" type="button" data-dismiss="modal">关闭</button>
+                    <button class="btn btn-primary" type="button">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>可拖动对话框</h2>
+    <button class="btn" type="button" 
+     data-moveable="true" 
+     data-toggle="modal" 
+     data-target="#myModal04">可以拖动的</button>
+    <div class="modal fade" id="myModal04">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                    <h4 class="modal-title">标题4</h4>
+                </div>
+                <div class="modal-body">
+                    <p>我是可以拖动的</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" type="button"
+                     data-dismiss="modal">关闭</button>
+                    <button class="btn btn-default" type="button">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h2>拖动后下次打开是上上次的位置</h2>
+    <button class="btn" type="button" 
+     data-moveable="true"
+     data-remember-pos="true"
+     data-toggle="modal" 
+     data-target="#myModal05">可以记住上次位置</button>
+    <div class="modal fade" id="myModal05">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                    <h4 class="modal-title">标题5</h4>
+                </div>
+                <div class="modal-body">
+                    <p>我是内容</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" type="button"
+                     data-dismiss="modal">关闭</button>
+                    <button class="btn btn-primary" type="button">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Notice: 
+        html标签里面使用记住上次位置的时候标签是：data-remember-pos="true/false"
+        js 使用改方法的方式是：rememberPos
+    -->
+
+    <hr>
+    <h2>手动调用JS</h2>
+    <div class="modal fade" id="myModal06">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                    <h4 class="modal-title">标题6</h4>
+                </div>
+                <div class="modal-body">
+                    <p>我是内容</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" type="button"
+                     data-dismiss="modal">关闭</button>
+                    <button class="btn btn-success" type="button">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="../../Static/jquery-2.1.4.min.js"></script>
+    <script src="../../Static/zui/js/zui.js"></script>
+    <script>
+        $(document).ready(function() {
+            // js 触发对话框
+            setTimeout(() => {
+                const MODAL_SHOW_FLAG = 0;
+                handleMsg(MODAL_SHOW_FLAG);
+                $('#myModal06').modal({
+                    show: true,
+                    moveable: true,
+                    position: '',
+                    moveable: true,
+                    rememberPos: true,
+                    keyboard: true
+                });
+            }, 3000);
+            setTimeout(() => {
+                const MODAL_HIDE_FLAG = 2;
+                handleMsg(MODAL_HIDE_FLAG);
+                $('#myModal06').modal('hide');
+            }, 5000);
+
+            // 回调函数
+            // 对话框显示了
+            $('#myModal06').on('show.zui.modal', () => {
+                const MODAL_SHOW_FLAG = 0;
+                handleMsg(MODAL_SHOW_FLAG);
+            });
+            $('#myModal06').on('shown.zui.modal', () => {
+                const MODAL_SHOWN_FLAG = 1;
+                handleMsg(MODAL_SHOWN_FLAG);
+            });
+            $('#myModal06').on('hide.zui.modal', () => {
+                const MODAL_HIDE_FLAG = 2;
+                handleMsg(MODAL_HIDE_FLAG);
+            });
+            $('#myModal06').on('hidden.zui.modal', () => {
+                const MODAL_HIDDEN_FLAG = 3;
+                handleMsg(MODAL_HIDDEN_FLAG);
+            });
+            $('#myModal06').on('escaping.zui.modal', () => {
+                const MODAL_USE_ESC_FLAG = 4;
+                handleMsg(MODAL_USE_ESC_FLAG);
+            });
+            function handleMsg(status) {
+                switch(status) {
+                    case 0: 
+                        console.log('modal show callback');
+                        break;
+                    case 1: 
+                        console.log('modal show transition complete callback');
+                        break;
+                    case 2:
+                        console.log('modal hide callback');
+                        break;
+                    case 3:
+                        console.log('modal hide transition complete callback');
+                        break;
+                    case 4:
+                        console.log('Esc key keypress');            
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
